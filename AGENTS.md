@@ -140,6 +140,17 @@ If a business rule is uncertain, make the uncertainty explicit in code/config ra
 
 - Remote: `https://github.com/gianhirakawa/project_sora.git` (private), default branch `main`.
 - The agent **only creates local commits**.
-- **Pushing to GitHub is done by the repo owner**, never by the agent. Do not attempt `git push`, and do not store tokens in `.git/config`, env files, or source code.
+- **Pushing to GitHub is always done by the repo owner (the user)**, never by the agent. Do not attempt `git push`, and do not store tokens in `.git/config`, env files, or source code.
 - Commit in logical chunks per `.pi/TASKS.md` work item, with a message describing what changed and how it was verified.
 - After committing, tell the user what to push (e.g. `git push origin main`) — the user runs it.
+- **Update `.pi/TASKS.md` in the same commit as the work it tracks**: check off completed items, set new focus, and keep the "Current focus" section accurate, so the task board always reflects the last commit.
+
+## 11. Status reporting
+
+When asked for the current status or a project update, do not rely on memory or conversation history. Derive the answer from:
+
+1. `.pi/TASKS.md` — checklist state, current focus, blockers
+2. `git log` — recent commits and what has been verified
+3. `git status` — uncommitted or dirty work in progress
+
+Report the last committed state, what is next, and any pending/uncommitted work.

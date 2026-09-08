@@ -2,6 +2,8 @@
 
 Use this file as the lightweight persistent task state for Pi.
 
+**Keep this file updated in the same commit as the work it tracks** (check off completed items, update "Current focus", note blockers) so it always matches the last commit. Status reports are derived from this file + `git log`.
+
 Status markers:
 
 - `[ ]` not started
