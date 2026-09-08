@@ -135,3 +135,11 @@ When requirements conflict, use this priority:
 5. Existing implementation conventions
 
 If a business rule is uncertain, make the uncertainty explicit in code/config rather than silently inventing a rule.
+
+## 10. Git workflow
+
+- Remote: `https://github.com/gianhirakawa/project_sora.git` (private), default branch `main`.
+- The agent **only creates local commits**.
+- **Pushing to GitHub is done by the repo owner**, never by the agent. Do not attempt `git push`, and do not store tokens in `.git/config`, env files, or source code.
+- Commit in logical chunks per `.pi/TASKS.md` work item, with a message describing what changed and how it was verified.
+- After committing, tell the user what to push (e.g. `git push origin main`) — the user runs it.
