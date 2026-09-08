@@ -59,8 +59,8 @@ Itemized plan (see commit history; T1–T4 = domain core, T5–T6 = UI, T7–T9 
 - [x] **M3-T2** Pure calculation engine — `calculator.ts`: bill → kWh → size range → panels → roof area → generation → savings → payback → 25-yr scenario → battery (when goal includes backup). No I/O, no dates
 - [x] **M3-T3** Zod input schema — `schema.ts`: bill-first + city/DUTY, property role, roof type, goal, daytime usage, optional kWh/AC units
 - [x] **M3-T4** Deterministic golden-case tests — Vitest (new dev dep; minimal standard runner, justifies the `test` script); 35 tests frozen to `sora-v1`; TESTING.md golden cases covered (low bill, high bill, savings+backup, high AC usage, renter, missing kWh, unusual roof)
-- [ ] **M3-T5** Calculator UI on `/calculate` — bill-first client component (existing `useState` form convention), qualification inputs, mobile-first
-- [ ] **M3-T6** Results display — all FRONTEND.md result UX outputs: size range, panel count, roof area, generation, savings, payback, battery (when applicable), assumptions block, `Indicative estimate` label, disclaimer copy, `Book a Free Site Survey` CTA
+- [x] **M3-T5** Calculator UI on `/calculate` — bill-first client component (`calculator-widget.tsx`, existing `useState` form convention), bill-first + city/DUTY + property role + roof + goal + occupancy + optional kWh/AC units, mobile-first
+- [x] **M3-T6** Results display (`results.tsx`) — all FRONTEND.md result UX outputs: size range, panel count, roof area, generation, savings (hero stat), payback, 25-yr savings, battery (when goal includes backup), indicative cost, assumptions block, `Indicative estimate` label, disclaimer copy, pre-filled `Book a Free Site Survey` CTA, renter note; shared format helpers in `src/lib/format.ts`
 - [ ] **M3-T7** Prefill site-survey form — encode calculator snapshot into `/book-site-survey` query params; booking form prefills city/role/interest/notes
 - [ ] **M3-T8** Analytics events — GA4-safe `trackEvent` helper (no-op until GA id configured); `calculator_view`, `calculator_result`, `calculator_survey_cta`
 - [ ] **M3-T9** Verification pass — lint/typecheck/tests/build, mobile review, a11y basics, TASKS.md sync
@@ -69,11 +69,11 @@ Original requirement checklist (kept for traceability):
 
 - [x] Define versioned calculator assumptions
 - [x] Implement bill-first input flow
-- [x] Add city/province and distribution utility (schema + reference data; UI select lands in M3-T5)
-- [x] Add owner/renter/property-manager field (schema; UI in M3-T5)
-- [x] Add roof type (schema; UI in M3-T5)
-- [x] Add goal: savings / backup / both (schema; UI in M3-T5)
-- [x] Add daytime usage input (schema; UI in M3-T5)
+- [x] Add city/province and distribution utility (schema + reference data + UI selects with DUTY auto-fill)
+- [x] Add owner/renter/property-manager field (schema + UI select)
+- [x] Add roof type (schema + UI radio group)
+- [x] Add goal: savings / backup / both (schema + UI radio group)
+- [x] Add daytime usage input (schema + UI radio group)
 - [x] Compute indicative kWp range
 - [x] Compute estimated panel count
 - [x] Compute approximate roof area
@@ -81,7 +81,7 @@ Original requirement checklist (kept for traceability):
 - [x] Compute monthly savings range
 - [x] Compute payback range
 - [x] Add battery backup estimate when applicable
-- [ ] Display assumptions and disclaimers (M3-T6)
+- [x] Display assumptions and disclaimers (M3-T6)
 - [ ] Prefill site-survey form from calculator result (M3-T7)
 - [ ] Add calculator analytics events (M3-T8)
 - [x] Add deterministic calculator tests
@@ -171,9 +171,9 @@ Working task list, tackled one by one. Each task is self-contained and checked o
 
 Set this section at the start of active development.
 
-- Current milestone: Milestone 3 — Calculator P0 (T1–T4 done: domain core + 35 passing tests)
-- Current task: M3-T5/T6 — calculator UI + results display on `/calculate`
-- Last verified build: lint + typecheck + 35 vitest green (domain core); `next build` verified pre-M3
+- Current milestone: Milestone 3 — Calculator P0 (T1–T6 done: domain core + bill-first UI + results on `/calculate`)
+- Current task: M3-T7 — prefill `/book-site-survey` from calculator query params (prefill URL builder already in `src/features/calculator/prefill.ts`)
+- Last verified build: lint + typecheck + 35 vitest + `next build` green; `/calculate` smoke-tested (200, form markup present)
 - Known blockers: None recorded
 
 ### Content sign-off needed (does not block build)

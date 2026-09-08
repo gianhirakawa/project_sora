@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import { Calculator } from "lucide-react";
 import { Container } from "@/components/ui/container";
-import { Button } from "@/components/ui/button";
+import { CalculatorWidget } from "@/components/calculator/calculator-widget";
 
 export const metadata: Metadata = {
   title: "Solar Savings Calculator",
@@ -11,22 +10,22 @@ export const metadata: Metadata = {
 
 export default function CalculatePage() {
   return (
-    <Container className="flex min-h-[50vh] flex-col items-start justify-center py-16">
-      <span className="grid h-14 w-14 place-items-center rounded-2xl bg-sky">
-        <Calculator className="h-7 w-7 text-ink" aria-hidden="true" />
-      </span>
-      <h1 className="mt-6 font-display text-4xl font-extrabold tracking-tight">
-        Solar Savings Calculator
-      </h1>
-      <p className="mt-3 max-w-xl text-ink-soft">
-        Our bill-first calculator is being finalized and will be here shortly.
-        In the meantime, book a free site survey and a Sora engineer will size
-        your system directly.
-      </p>
-      <div className="mt-8">
-        <Button href="/book-site-survey" size="lg">
-          Book a Free Site Survey
-        </Button>
+    <Container className="py-12 sm:py-16">
+      <header className="max-w-2xl">
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-sky px-3 py-1 text-xs font-semibold uppercase tracking-wide text-ink-soft">
+          Free · No login · Bill-first
+        </span>
+        <h1 className="mt-4 font-display text-4xl font-extrabold tracking-tight sm:text-5xl">
+          Solar Savings Calculator
+        </h1>
+        <p className="mt-3 text-lg text-ink-soft">
+          Enter your latest electric bill and a few details about your home.
+          We’ll show an indicative system size, savings range, and payback —
+          then you can book a free site survey if you want to move forward.
+        </p>
+      </header>
+      <div className="mt-8 max-w-3xl">
+        <CalculatorWidget />
       </div>
     </Container>
   );
