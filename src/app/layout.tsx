@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Instrument_Sans, Sora } from "next/font/google";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
 import "./globals.css";
 
 const sora = Sora({
@@ -34,7 +36,13 @@ export default function RootLayout({
       lang="en"
       className={`${sora.variable} ${instrument.variable} [font-family:var(--font-instrument)]`}
     >
-      <body>{children}</body>
+      <body>
+        <Header />
+        <div className="flex min-h-svh flex-1 flex-col">
+          <main className="flex-1">{children}</main>
+        </div>
+        <Footer />
+      </body>
     </html>
   );
 }
