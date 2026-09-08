@@ -53,24 +53,38 @@ Status markers:
 
 ## Milestone 3 — Solar calculator P0
 
-- [ ] Define versioned calculator assumptions
-- [ ] Implement bill-first input flow
-- [ ] Add city/province and distribution utility
-- [ ] Add owner/renter/property-manager field
-- [ ] Add roof type
-- [ ] Add goal: savings / backup / both
-- [ ] Add daytime usage input
-- [ ] Compute indicative kWp range
-- [ ] Compute estimated panel count
-- [ ] Compute approximate roof area
-- [ ] Compute generation range
-- [ ] Compute monthly savings range
-- [ ] Compute payback range
-- [ ] Add battery backup estimate when applicable
-- [ ] Display assumptions and disclaimers
-- [ ] Prefill site-survey form from calculator result
-- [ ] Add calculator analytics events
-- [ ] Add deterministic calculator tests
+Itemized plan (see commit history; T1–T4 = domain core, T5–T6 = UI, T7–T9 = prefill/analytics/verification):
+
+- [x] **M3-T1** Versioned assumption set + geo reference data — `src/features/calculator/assumptions.ts` (frozen `sora-v1` set), `cities.ts` (curated city → region/DUTY, updatable content), `types.ts`
+- [x] **M3-T2** Pure calculation engine — `calculator.ts`: bill → kWh → size range → panels → roof area → generation → savings → payback → 25-yr scenario → battery (when goal includes backup). No I/O, no dates
+- [x] **M3-T3** Zod input schema — `schema.ts`: bill-first + city/DUTY, property role, roof type, goal, daytime usage, optional kWh/AC units
+- [x] **M3-T4** Deterministic golden-case tests — Vitest (new dev dep; minimal standard runner, justifies the `test` script); 35 tests frozen to `sora-v1`; TESTING.md golden cases covered (low bill, high bill, savings+backup, high AC usage, renter, missing kWh, unusual roof)
+- [ ] **M3-T5** Calculator UI on `/calculate` — bill-first client component (existing `useState` form convention), qualification inputs, mobile-first
+- [ ] **M3-T6** Results display — all FRONTEND.md result UX outputs: size range, panel count, roof area, generation, savings, payback, battery (when applicable), assumptions block, `Indicative estimate` label, disclaimer copy, `Book a Free Site Survey` CTA
+- [ ] **M3-T7** Prefill site-survey form — encode calculator snapshot into `/book-site-survey` query params; booking form prefills city/role/interest/notes
+- [ ] **M3-T8** Analytics events — GA4-safe `trackEvent` helper (no-op until GA id configured); `calculator_view`, `calculator_result`, `calculator_survey_cta`
+- [ ] **M3-T9** Verification pass — lint/typecheck/tests/build, mobile review, a11y basics, TASKS.md sync
+
+Original requirement checklist (kept for traceability):
+
+- [x] Define versioned calculator assumptions
+- [x] Implement bill-first input flow
+- [x] Add city/province and distribution utility (schema + reference data; UI select lands in M3-T5)
+- [x] Add owner/renter/property-manager field (schema; UI in M3-T5)
+- [x] Add roof type (schema; UI in M3-T5)
+- [x] Add goal: savings / backup / both (schema; UI in M3-T5)
+- [x] Add daytime usage input (schema; UI in M3-T5)
+- [x] Compute indicative kWp range
+- [x] Compute estimated panel count
+- [x] Compute approximate roof area
+- [x] Compute generation range
+- [x] Compute monthly savings range
+- [x] Compute payback range
+- [x] Add battery backup estimate when applicable
+- [ ] Display assumptions and disclaimers (M3-T6)
+- [ ] Prefill site-survey form from calculator result (M3-T7)
+- [ ] Add calculator analytics events (M3-T8)
+- [x] Add deterministic calculator tests
 
 ## Milestone 4 — Lead capture + CRM
 
@@ -157,9 +171,9 @@ Working task list, tackled one by one. Each task is self-contained and checked o
 
 Set this section at the start of active development.
 
-- Current milestone: Milestone 1 (COMPLETE except content sign-off)
-- Current task: Milestone 3 — Calculator P0
-- Last verified build: `next build` green (7 static routes) + smoke test 200 on all routes
+- Current milestone: Milestone 3 — Calculator P0 (T1–T4 done: domain core + 35 passing tests)
+- Current task: M3-T5/T6 — calculator UI + results display on `/calculate`
+- Last verified build: lint + typecheck + 35 vitest green (domain core); `next build` verified pre-M3
 - Known blockers: None recorded
 
 ### Content sign-off needed (does not block build)
