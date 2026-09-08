@@ -1,8 +1,28 @@
+import { Hero } from "@/components/marketing/hero";
+import { TrustStrip } from "@/components/marketing/trust-strip";
+import { CalculatorTeaser } from "@/components/marketing/calculator-teaser";
+import { Solutions } from "@/components/marketing/solutions";
+import { HowItWorks } from "@/components/marketing/how-it-works";
+import { Packages } from "@/components/marketing/packages";
+import { Projects } from "@/components/marketing/projects";
+import { WhySora } from "@/components/marketing/why-sora";
+import { Faq } from "@/components/marketing/faq";
+import { FinalCta } from "@/components/marketing/final-cta";
+
 export default function HomePage() {
+  // Section order follows the homepage order in .pi/FRONTEND.md
   return (
-    <main className="flex min-h-svh flex-col items-center justify-center gap-4">
-      <h1 className="font-display text-4xl font-bold">Sora Solar</h1>
-      <p>Foundation scaffold — homepage lands next.</p>
-    </main>
+    <>
+      <Hero />
+      <TrustStrip />
+      <CalculatorTeaser />
+      <Solutions />
+      <HowItWorks />
+      <Packages />
+      <Projects />
+      <WhySora />
+      <Faq />
+      <FinalCta />
+    </>
   );
 }

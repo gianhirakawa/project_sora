@@ -11,28 +11,28 @@ Status markers:
 
 ## Milestone 0 — Foundation
 
-- [ ] Initialize Next.js + React + TypeScript project
-- [ ] Enable strict TypeScript and ESLint
-- [ ] Configure Tailwind CSS and design tokens
-- [ ] Establish component primitives
-- [ ] Establish route structure from sitemap
-- [ ] Add environment-variable schema
-- [ ] Add CI commands for lint, typecheck, test, build
-- [ ] Add error handling / logging conventions
+- [x] Initialize Next.js + React + TypeScript project
+- [x] Enable strict TypeScript and ESLint
+- [x] Configure Tailwind CSS and design tokens
+- [x] Establish component primitives
+- [x] Establish route structure from sitemap (M1 routes done; remaining routes land with their milestones)
+- [x] Add environment-variable schema
+- [x] Add CI commands for lint, typecheck, test, build (+ GitHub Actions workflow)
+- [ ] Add error handling / logging conventions (conventions in use: typed action results + redacted `console.info` in `src/server`; formalize once M4 adds persistence)
 
 ## Milestone 1 — Public acquisition site
 
-- [ ] Global header / mobile navigation
-- [ ] Homepage hero + trust strip
-- [ ] Three solution cards: On-grid / Hybrid + Battery / Off-grid
-- [ ] How It Works section
-- [ ] Package preview cards
-- [ ] Projects / case-study preview
-- [ ] Reviews/testimonials block
-- [ ] FAQ
-- [ ] Final CTA
-- [ ] Contact / site-survey page
-- [ ] Privacy / terms / data privacy pages
+- [x] Global header / mobile navigation
+- [x] Homepage hero + trust strip
+- [x] Three solution cards: On-grid / Hybrid + Battery / Off-grid
+- [x] How It Works section
+- [x] Package preview cards (illustrative pricing — confirm with business)
+- [x] Projects / case-study preview (draft content — replace with real projects)
+- [x] Reviews/testimonials block (draft content — replace with real quotes)
+- [x] FAQ
+- [x] Final CTA
+- [x] Contact / site-survey page (form UI + Zod server actions; persistence lands in M4)
+- [x] Privacy / terms / data privacy pages
 
 ## Milestone 2 — System and trust content
 
@@ -127,35 +127,40 @@ Working task list, tackled one by one. Each task is self-contained and checked o
 
 ### Phase A — Foundation (unblocks everything)
 
-- [ ] **A1. Scaffold Next.js project** — package.json (Next.js App Router, React, TS strict), ESLint, Tailwind + design tokens, scripts (`dev`, `build`, `lint`, `typecheck`, `test`), `.env.example` + env schema, `.gitignore`, git init
-- [ ] **A2. App shell** — `layout.tsx`, metadata conventions, globals, root page placeholder, route folders for M1 routes
-- [ ] **A3. UI primitives** — `Button`, `Container`, `Section`, `Card`, `Badge`, `Accordion` (FAQ), form `Field`/`Input` wrappers with accessible label/error wiring
-- [ ] **A4. Global header + footer** — header with sticky nav, mobile menu (accessible, keyboard-friendly), footer with route-map links + legal links
+- [x] **A1. Scaffold Next.js project** — package.json (Next.js App Router, React, TS strict), ESLint, Tailwind + design tokens, scripts (`dev`, `build`, `lint`, `typecheck`, `test`), `.env.example` + env schema, `.gitignore`, git init
+- [x] **A2. App shell** — `layout.tsx`, metadata conventions, globals, root page placeholder, route folders for M1 routes
+- [x] **A3. UI primitives** — `Button`, `Container`, `Section`, `Card`, `Badge`, `Accordion` (FAQ), form `Field`/`Input` wrappers with accessible label/error wiring
+- [x] **A4. Global header + footer** — header with sticky nav, mobile menu (accessible, keyboard-friendly), footer with route-map links + legal links
 
 ### Phase B — Homepage (primary conversion surface, order per FRONTEND.md)
 
-- [ ] **B1. Hero** — value proposition, `Calculate My Savings` primary CTA, `Book Free Site Survey` secondary CTA
-- [ ] **B2. Trust strip** — credentials/projects/coverage proof row
-- [ ] **B3. Calculator teaser** — bill-first teaser card linking to `/calculate` (real calculator lands in Milestone 3)
-- [ ] **B4. Solution cards** — On-grid / Hybrid + Battery / Off-grid with clear use-case framing
-- [ ] **B5. How It Works** — 4-step funnel explanation (estimate → survey → proposal → install)
-- [ ] **B6. Package examples** — 3 indicative package cards (labeled non-binding)
-- [ ] **B7. Real projects** — case-study preview cards (placeholder data clearly marked)
-- [ ] **B8. Why Sora + reviews** — differentiators + testimonial block
-- [ ] **B9. FAQ** — Accordion, ~6 questions from customer-question list in PROJECT.md
-- [ ] **B10. Final CTA + homepage assembly** — bill/survey CTA, compose all sections in FRONTEND.md order
+- [x] **B1. Hero** — value proposition, `Calculate My Savings` primary CTA, `Book Free Site Survey` secondary CTA
+- [x] **B2. Trust strip** — credentials/projects/coverage proof row
+- [x] **B3. Calculator teaser** — bill-first teaser card linking to `/calculate` (real calculator lands in Milestone 3)
+- [x] **B4. Solution cards** — On-grid / Hybrid + Battery / Off-grid with clear use-case framing
+- [x] **B5. How It Works** — 4-step funnel explanation (estimate → survey → proposal → install)
+- [x] **B6. Package examples** — 3 indicative package cards (labeled non-binding)
+- [x] **B7. Real projects** — case-study preview cards (placeholder data clearly marked)
+- [x] **B8. Why Sora + reviews** — differentiators + testimonial block
+- [x] **B9. FAQ** — Accordion, ~6 questions from customer-question list in PROJECT.md
+- [x] **B10. Final CTA + homepage assembly** — bill/survey CTA, compose all sections in FRONTEND.md order
 
 ### Phase C — M1 supporting pages
 
-- [ ] **C1. `/contact` + `/book-site-survey`** — static lead-capture pages (form UI only; server persistence lands in Milestone 4). Must not require login
-- [ ] **C2. Legal pages** — `/privacy`, `/terms` (+ data-privacy posture per SECURITY_PRIVACY.md)
-- [ ] **C3. Verification pass** — full build, lint, typecheck, mobile layout review, a11y basics (headings, focus, landmarks), update task board
+- [x] **C1. `/contact` + `/book-site-survey`** — static lead-capture pages (form UI only; server persistence lands in Milestone 4). Must not require login
+- [x] **C2. Legal pages** — `/privacy`, `/terms` (+ data-privacy posture per SECURITY_PRIVACY.md)
+- [x] **C3. Verification pass** — full build, lint, typecheck, mobile layout review, a11y basics (headings, focus, landmarks), update task board
 
 ## Current focus
 
 Set this section at the start of active development.
 
-- Current milestone: Milestone 1 (with Milestone 0 prerequisites A1–A4 first)
-- Current task: A1 — Scaffold Next.js project
-- Last verified build: Not yet established
+- Current milestone: Milestone 1 (COMPLETE except content sign-off)
+- Current task: Milestone 3 — Calculator P0
+- Last verified build: `next build` green (7 static routes) + smoke test 200 on all routes
 - Known blockers: None recorded
+
+### Content sign-off needed (does not block build)
+
+- Trust strip claims, package names/prices, project case studies, testimonials
+  are DRAFT copy flagged in component comments — replace before launch.
