@@ -5,6 +5,7 @@ import {
   submitSiteSurvey,
   type ActionResult,
 } from "@/server/actions/leads";
+import type { SurveyFormPrefill } from "@/features/calculator/prefill";
 import { Button } from "../ui/button";
 import {
   Field,
@@ -34,8 +35,18 @@ const initialState: FormState = {
   notes: "",
 };
 
-export function BookSiteSurveyForm() {
-  const [values, setValues] = useState<FormState>(initialState);
+export function BookSiteSurveyForm({ prefill }: { prefill?: SurveyFormPrefill }) {
+  const [values, setValues] = useState<FormState>(() =>
+    prefill
+      ? {
+          ...initialState,
+          city: prefill.city || initialState.city,
+          propertyRole: prefill.propertyRole,
+          interest: prefill.interest,
+          notes: prefill.notes,
+        }
+      : initialState,
+  );
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [banner, setBanner] = useState<ActionResult | null>(null);
   const [pending, setPending] = useState(false);
@@ -62,6 +73,12 @@ export function BookSiteSurveyForm() {
 
   return (
     <form onSubmit={onSubmit} noValidate className="flex flex-col gap-4">
+      {prefill?.notes ? (
+        <div className="rounded-xl border border-moss/30 bg-moss/10 px-4 py-3 text-sm font-medium text-moss">
+          We pre-filled this from your calculator estimate — adjust anything
+          that has changed.
+        </div>
+      ) : null}
       {banner?.ok === false && <FormErrorBanner message={banner.message} />}
       {banner?.ok === true && <FormSuccessBanner message={banner.message} />}
 

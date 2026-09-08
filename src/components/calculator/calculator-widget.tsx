@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   CITY_OPTIONS,
   OTHER_CITY,
@@ -21,6 +21,7 @@ import type { DaytimeUsage, Goal, PropertyRole, RoofType } from "@/features/calc
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Field, SelectField, TextField } from "@/components/ui/field";
+import { trackEvent } from "@/lib/analytics";
 import { CalculatorResults } from "./results";
 
 interface FormState {
@@ -140,6 +141,10 @@ export function CalculatorWidget() {
   const [result, setResult] = useState<ResultState | null>(null);
   const resultRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    trackEvent("calculator_view");
+  }, []);
+
   const set = (key: keyof FormState) => (value: string) =>
     setForm((f) => ({ ...f, [key]: value }));
 
@@ -201,6 +206,14 @@ export function CalculatorWidget() {
       panelCount: calc.panelCount,
     });
     setErrors({});
+    trackEvent("calculator_result", {
+      goal: values.goal,
+      kwp_min: calc.systemKwp[0],
+      kwp_max: calc.systemKwp[1],
+      panels_min: calc.panelCount[0],
+      panels_max: calc.panelCount[1],
+      battery: calc.battery !== undefined,
+    });
     requestAnimationFrame(() =>
       resultRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }),
     );
@@ -409,6 +422,7 @@ export function CalculatorWidget() {
           <CalculatorResults
             result={result.result}
             propertyRole={result.propertyRole}
+            onCtaClick={() => trackEvent("calculator_survey_cta", { goal: result.goal })}
             prefillUrl={buildSurveyPrefillUrl({
               monthlyBillPhp: result.monthlyBillPhp,
               monthlyKwh: result.monthlyKwh,

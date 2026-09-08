@@ -16,6 +16,7 @@ interface CalculatorResultsProps {
   result: CalculatorResult;
   propertyRole: PropertyRole;
   prefillUrl: string;
+  onCtaClick?: () => void;
 }
 
 function StatTile({
@@ -46,6 +47,7 @@ export function CalculatorResults({
   result,
   propertyRole,
   prefillUrl,
+  onCtaClick,
 }: CalculatorResultsProps) {
   const a = ACTIVE_ASSUMPTION_SET;
   const kwpHi = result.systemKwp[1];
@@ -176,7 +178,7 @@ export function CalculatorResults({
       </p>
 
       <div className="flex flex-wrap items-center gap-4">
-        <Button href={prefillUrl} size="lg">
+        <Button href={prefillUrl} size="lg" onClick={onCtaClick}>
           Book a Free Site Survey
         </Button>
         <span className="text-sm text-ink-soft">

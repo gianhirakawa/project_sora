@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ClipboardCheck, MapPin, Timer, ShieldCheck } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { BookSiteSurveyForm } from "@/components/forms/book-site-survey-form";
+import { surveyPrefillSchema, toFormPrefill } from "@/features/calculator/prefill";
 
 export const metadata: Metadata = {
   title: "Book a Free Site Survey",
@@ -32,7 +33,28 @@ const benefits = [
   },
 ];
 
-export default function BookSiteSurveyPage() {
+function coerceParams(
+  raw: Record<string, string | string[] | undefined>,
+): Record<string, string> {
+  const out: Record<string, string> = {};
+  for (const [k, v] of Object.entries(raw)) {
+    if (typeof v === "string") out[k] = v;
+  }
+  return out;
+}
+
+export default async function BookSiteSurveyPage({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
+  const params = await searchParams;
+  const parsed = surveyPrefillSchema.safeParse(coerceParams(params));
+  const prefill =
+    parsed.success && parsed.data.estimate === "1"
+      ? toFormPrefill(parsed.data)
+      : undefined;
+
   return (
     <Container className="py-14 sm:py-20">
       <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
@@ -62,7 +84,7 @@ export default function BookSiteSurveyPage() {
 
         <div>
           <h2 className="sr-only">Site survey request form</h2>
-          <BookSiteSurveyForm />
+          <BookSiteSurveyForm prefill={prefill} />
         </div>
       </div>
     </Container>

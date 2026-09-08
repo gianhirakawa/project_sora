@@ -61,9 +61,9 @@ Itemized plan (see commit history; T1–T4 = domain core, T5–T6 = UI, T7–T9 
 - [x] **M3-T4** Deterministic golden-case tests — Vitest (new dev dep; minimal standard runner, justifies the `test` script); 35 tests frozen to `sora-v1`; TESTING.md golden cases covered (low bill, high bill, savings+backup, high AC usage, renter, missing kWh, unusual roof)
 - [x] **M3-T5** Calculator UI on `/calculate` — bill-first client component (`calculator-widget.tsx`, existing `useState` form convention), bill-first + city/DUTY + property role + roof + goal + occupancy + optional kWh/AC units, mobile-first
 - [x] **M3-T6** Results display (`results.tsx`) — all FRONTEND.md result UX outputs: size range, panel count, roof area, generation, savings (hero stat), payback, 25-yr savings, battery (when goal includes backup), indicative cost, assumptions block, `Indicative estimate` label, disclaimer copy, pre-filled `Book a Free Site Survey` CTA, renter note; shared format helpers in `src/lib/format.ts`
-- [ ] **M3-T7** Prefill site-survey form — encode calculator snapshot into `/book-site-survey` query params; booking form prefills city/role/interest/notes
-- [ ] **M3-T8** Analytics events — GA4-safe `trackEvent` helper (no-op until GA id configured); `calculator_view`, `calculator_result`, `calculator_survey_cta`
-- [ ] **M3-T9** Verification pass — lint/typecheck/tests/build, mobile review, a11y basics, TASKS.md sync
+- [x] **M3-T7** Prefill site-survey form — `buildSurveyPrefillUrl` + strict `surveyPrefillSchema` (unknown params rejected) + `toFormPrefill`; `/book-site-survey` page validates server-side, form prefills city/role/interest/notes with visible `We pre-filled this from your calculator estimate` banner; 9 prefill tests
+- [x] **M3-T8** Analytics events — GA4-safe `trackEvent` helper in `src/lib/analytics.ts` (no gtag import, queues into `dataLayer` if not ready, no PII); `calculator_view`, `calculator_result` (goal + kWp/panel ranges + battery flag only), `calculator_survey_cta`
+- [x] **M3-T9** Verification pass — lint + typecheck clean, 44/44 tests, `next build` green (clean `.next`; earlier ENOENT traced to stale cross-machine build, not app code), prod smoke: `/calculate` 200 form+CTA, prefill SSR verified, malicious params rejected
 
 Original requirement checklist (kept for traceability):
 
@@ -82,8 +82,8 @@ Original requirement checklist (kept for traceability):
 - [x] Compute payback range
 - [x] Add battery backup estimate when applicable
 - [x] Display assumptions and disclaimers (M3-T6)
-- [ ] Prefill site-survey form from calculator result (M3-T7)
-- [ ] Add calculator analytics events (M3-T8)
+- [x] Prefill site-survey form from calculator result (M3-T7)
+- [x] Add calculator analytics events (M3-T8)
 - [x] Add deterministic calculator tests
 
 ## Milestone 4 — Lead capture + CRM
@@ -171,9 +171,9 @@ Working task list, tackled one by one. Each task is self-contained and checked o
 
 Set this section at the start of active development.
 
-- Current milestone: Milestone 3 — Calculator P0 (T1–T6 done: domain core + bill-first UI + results on `/calculate`)
-- Current task: M3-T7 — prefill `/book-site-survey` from calculator query params (prefill URL builder already in `src/features/calculator/prefill.ts`)
-- Last verified build: lint + typecheck + 35 vitest + `next build` green; `/calculate` smoke-tested (200, form markup present)
+- Current milestone: **Milestone 3 — COMPLETE (T1–T9).** Bill-first calculator → indicative results → prefilled site-survey booking, with GA4-safe analytics. No PII in URLs/analytics.
+- Current task: choose next — **Milestone 2** (12 education/SEO content pages, ready to start, no blockers) or **Milestone 4** (Supabase persistence for forms/leads)
+- Last verified build: 2026-07-22 — lint + typecheck clean, 44/44 vitest, `next build` green; prod smoke: `/calculate` 200 (form+CTA), `/book-site-survey` prefill SSR verified (banner/city/role/interest/notes), `?evil=hacked` rejected (no prefill)
 - Known blockers: None recorded
 
 ### Content sign-off needed (does not block build)

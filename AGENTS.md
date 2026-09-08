@@ -144,6 +144,7 @@ If a business rule is uncertain, make the uncertainty explicit in code/config ra
 - Commit in logical chunks per `.pi/TASKS.md` work item, with a message describing what changed and how it was verified.
 - After committing, tell the user what to push (e.g. `git push origin main`) — the user runs it.
 - **Update `.pi/TASKS.md` in the same commit as the work it tracks**: check off completed items, set new focus, and keep the "Current focus" section accurate, so the task board always reflects the last commit.
+- **Commit, then stop.** After each completed work chunk: (1) update `.pi/TASKS.md` in the same commit, (2) report the commit + verification summary to the user, (3) **stop and wait** — do not start the next task or milestone until the user prompts for it.
 
 ## 11. Status reporting
 
