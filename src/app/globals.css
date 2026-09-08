@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+
+  /* Sora brand palette */
+  --color-paper: #faf8f4;
+  --color-ink: #0c1f33;
+  --color-ink-soft: #41586f;
+  --color-sun: #ffb703;
+  --color-sun-deep: #e39b00;
+  --color-sky: #eaf2f8;
+  --color-moss: #1f6f5c;
+  --color-line: #e3ddd2;
+
+  --shadow-lift: 0 12px 32px -12px rgb(12 31 51 / 0.18);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  @apply bg-paper text-ink font-body antialiased;
+}
+
+::selection {
+  background: var(--color-sun);
+  color: var(--color-ink);
+}
