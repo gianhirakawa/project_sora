@@ -7,13 +7,12 @@ import { Button } from "./ui/button";
 import { Container } from "./ui/container";
 
 type NavLink = { label: string; href: string };
-type NavSection = { label: string; href?: string; items: NavLink[] };
+type NavSection = { label: string; items: NavLink[] };
 type NavEntry = (NavLink & { items?: undefined }) | NavSection;
 
 const navEntries: NavEntry[] = [
   {
     label: "Systems",
-    href: "/#solutions",
     items: [
       { label: "Home Solar (On-Grid)", href: "/get-solar/home-solar" },
       { label: "Solar + Battery (Hybrid)", href: "/get-solar/solar-battery" },
@@ -23,7 +22,6 @@ const navEntries: NavEntry[] = [
   },
   {
     label: "Products",
-    href: "/products",
     items: [
       { label: "All Products", href: "/products" },
       { label: "Solar Panels", href: "/products/panels" },
@@ -39,27 +37,39 @@ const navEntries: NavEntry[] = [
   { label: "FAQ", href: "/#faq" },
 ];
 
+const isSection = (entry: NavEntry): entry is NavSection =>
+  entry.items !== undefined;
+
 export function Header() {
   const [open, setOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [openMobileSection, setOpenMobileSection] = useState<string | null>(
+    null,
+  );
   const menuRef = useRef<HTMLDivElement>(null);
-  const dropdownRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
+  const desktopRefs = useRef<Record<string, HTMLButtonElement | null>>({});
 
-  // Close mobile menu on Escape; return focus to the toggle.
+  // Escape closes the mobile menu (focus to the toggle) or the open desktop
+  // dropdown (focus back to its trigger).
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
-      if (e.key === "Escape" && menuRef.current?.contains(document.activeElement)) {
+      if (e.key !== "Escape") return;
+      if (menuRef.current?.contains(document.activeElement)) {
         setOpen(false);
+        setOpenMobileSection(null);
         document.getElementById("mobile-menu-toggle")?.focus();
+      } else if (openDropdown) {
+        setOpenDropdown(null);
+        desktopRefs.current[openDropdown]?.focus();
       }
     }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, []);
+  }, [openDropdown]);
 
   // Mobile menu links: unified tap-target geometry (M2 theme revamp).
   const mobileLinkBase =
-    "flex min-h-11 w-full items-center rounded-xl px-3 py-2.5 text-ink hover:bg-sky focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-sun";
+    "flex min-h-11 w-full items-center gap-2 rounded-xl px-3 py-2.5 text-ink hover:bg-sand focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-sun";
 
   const sectionLink = (label: string, href: string) => (
     <a
@@ -92,33 +102,40 @@ export function Header() {
         <nav aria-label="Main" className="hidden lg:block">
           <ul className="flex items-center gap-6">
             {navEntries.map((entry) =>
-              "items" in entry && entry.items ? (
+              isSection(entry) ? (
                 <li
                   key={entry.label}
                   className="relative"
                   onMouseEnter={() => setOpenDropdown(entry.label)}
-                  onMouseLeave={() => setOpenDropdown(null)}
-                  onKeyDown={(e) => {
-                    if (e.key === "Escape" && openDropdown === entry.label) {
-                      setOpenDropdown(null);
-                      dropdownRefs.current[entry.label]?.focus();
-                    }
-                  }}
+                  onMouseLeave={() =>
+                    setOpenDropdown((v) => (v === entry.label ? null : v))
+                  }
                 >
-                  <a
+                  <button
+                    type="button"
                     ref={(el) => {
-                      dropdownRefs.current[entry.label] = el;
-                    }}
-                    href={entry.href ?? entry.items[0].href}
-                    onFocus={() => setOpenDropdown(entry.label)}
-                    onBlur={(e) => {
-                      // Close when focus leaves the whole dropdown subtree.
-                      if (!e.currentTarget.parentElement?.contains(e.relatedTarget as Node)) {
-                        setOpenDropdown(null);
-                      }
+                      desktopRefs.current[entry.label] = el;
                     }}
                     aria-expanded={openDropdown === entry.label}
                     aria-controls={`nav-${entry.label}`}
+                    onClick={() =>
+                      setOpenDropdown((v) =>
+                        v === entry.label ? null : entry.label,
+                      )
+                    }
+                    onFocus={() => setOpenDropdown(entry.label)}
+                    onBlur={(e) => {
+                      // Close when focus leaves the whole dropdown subtree.
+                      if (
+                        !e.currentTarget.parentElement?.contains(
+                          e.relatedTarget as Node,
+                        )
+                      ) {
+                        setOpenDropdown((v) =>
+                          v === entry.label ? null : v,
+                        );
+                      }
+                    }}
                     className="inline-flex items-center gap-1 rounded px-2 py-1 text-sm font-semibold text-ink-soft hover:text-ink focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-sun"
                   >
                     {entry.label}
@@ -128,18 +145,18 @@ export function Header() {
                         openDropdown === entry.label ? "rotate-180" : ""
                       }`}
                     />
-                  </a>
+                  </button>
                   {openDropdown === entry.label && (
                     <div
                       id={`nav-${entry.label}`}
-                      className="absolute left-0 top-full pt-2"
+                      className="absolute left-0 top-full z-20 pt-2"
                     >
                       <ul className="w-64 rounded-xl border border-line bg-white p-2 shadow-lg">
                         {entry.items.map((item) => (
                           <li key={item.href}>
                             <a
                               href={item.href}
-                              className="block rounded-lg px-3 py-2 text-sm font-medium text-ink-soft hover:bg-sky hover:text-ink focus-visible:outline-2 focus-visible:outline-sun"
+                              className="block rounded-lg px-3 py-2 text-sm font-medium text-ink-soft hover:bg-sand hover:text-ink focus-visible:outline-2 focus-visible:outline-sun"
                             >
                               {item.label}
                             </a>
@@ -158,7 +175,7 @@ export function Header() {
                     {entry.label}
                   </a>
                 </li>
-              )
+              ),
             )}
           </ul>
         </nav>
@@ -189,25 +206,49 @@ export function Header() {
         >
           <Container className="flex flex-col gap-1 py-4">
             {navEntries.map((entry) =>
-              "items" in entry && entry.items ? (
+              isSection(entry) ? (
                 <div key={entry.label} className="mb-1">
-                  <p className="px-3 pb-1 pt-2 text-xs font-bold uppercase tracking-wider text-ink-soft">
+                  <button
+                    type="button"
+                    aria-expanded={openMobileSection === entry.label}
+                    aria-controls={`mobile-nav-${entry.label}`}
+                    onClick={() =>
+                      setOpenMobileSection((v) =>
+                        v === entry.label ? null : entry.label,
+                      )
+                    }
+                    className={`${mobileLinkBase} justify-between font-display text-base font-semibold`}
+                  >
                     {entry.label}
-                  </p>
-                  {entry.items.map((item) => (
-                    <a
-                      key={item.href}
-                      href={item.href}
-                      onClick={() => setOpen(false)}
-                      className={`${mobileLinkBase} text-sm font-medium`}
+                    <ChevronDown
+                      aria-hidden="true"
+                      className={`h-4 w-4 shrink-0 transition-transform ${
+                        openMobileSection === entry.label ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+                  {openMobileSection === entry.label && (
+                    <ul
+                      id={`mobile-nav-${entry.label}`}
+                      className="ml-2 mt-0.5 space-y-0.5 border-s-2 border-sun/50 ps-3"
                     >
-                      {item.label}
-                    </a>
-                  ))}
+                      {entry.items.map((item) => (
+                        <li key={item.href}>
+                          <a
+                            href={item.href}
+                            onClick={() => setOpen(false)}
+                            className={`${mobileLinkBase} text-sm font-medium`}
+                          >
+                            {item.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               ) : (
                 sectionLink(entry.label, entry.href)
-              )
+              ),
             )}
             <div className="mt-3 pb-2">
               <Button href="/book-site-survey" size="lg" className="w-full">
