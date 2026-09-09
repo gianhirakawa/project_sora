@@ -26,18 +26,20 @@ export function SectionHeading({
 
   return (
     <div className={classes}>
+      {/* Sunline — the site's signature motif (see .pi/DESIGN_THEME.md) */}
+      <span aria-hidden="true" className="block h-[3px] w-12 rounded-full bg-sunrise" />
       {eyebrow ? (
         <Badge
-          className={
-            dark ? "border-paper/20 bg-paper/10 text-paper" : undefined
-          }
+          className={`mt-4 ${
+            dark ? "border-paper/20 bg-paper/10 text-paper" : ""
+          }`}
         >
           {eyebrow}
         </Badge>
       ) : null}
       <h2
         id={id}
-        className={`font-display text-3xl font-extrabold tracking-tight sm:text-4xl ${eyebrow ? "mt-4" : ""}`}
+        className="mt-4 font-display text-3xl font-extrabold tracking-tight sm:text-4xl"
       >
         {title}
       </h2>

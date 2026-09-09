@@ -49,7 +49,7 @@ const reviews = [
 
 export function WhySora() {
   return (
-    <Section labelledBy="why-heading">
+    <Section labelledBy="why-heading" tone="tint">
       <div className="grid gap-10 lg:grid-cols-2">
         <div>
           <SectionHeading id="why-heading" title="Why homeowners pick Sora" />

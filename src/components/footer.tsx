@@ -38,7 +38,11 @@ const groups: { title: string; links: { label: string; href: string }[] }[] = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-line bg-ink text-paper">
+    <footer className="relative bg-dusk text-paper">
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 h-[3px] bg-sunrise"
+      />
       <Container className="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-6">
         <div className="sm:col-span-2">
           <Link href="/" className="inline-flex items-center gap-2">

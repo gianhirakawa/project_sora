@@ -7,7 +7,7 @@ export function Hero() {
   return (
     <section
       aria-labelledby="hero-heading"
-      className="relative overflow-hidden border-b border-line"
+      className="grain relative overflow-hidden border-b border-line"
     >
       {/* Sun arc backdrop */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
@@ -16,11 +16,11 @@ export function Hero() {
         <div className="absolute inset-0 bg-[radial-gradient(rgba(12,31,51,0.05)_1px,transparent_1px)] [background-size:22px_22px]" />
       </div>
 
-      <Container className="relative flex min-h-[520px] flex-col justify-center py-16 sm:py-24">
-        <Badge>Residential Solar · Philippines</Badge>
+      <Container className="relative z-10 flex min-h-[520px] flex-col justify-center py-16 sm:py-24">
+        <Badge className="reveal">Residential Solar · Philippines</Badge>
         <h1
           id="hero-heading"
-          className="mt-5 max-w-3xl font-display text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-6xl"
+          className="reveal reveal-1 mt-5 max-w-3xl font-display text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-6xl"
         >
           Sunlight on your roof.{" "}
           <span className="relative whitespace-nowrap">
@@ -32,12 +32,12 @@ export function Hero() {
           </span>{" "}
           every month.
         </h1>
-        <p className="mt-5 max-w-xl text-lg text-ink-soft">
+        <p className="reveal reveal-2 mt-5 max-w-xl text-lg text-ink-soft">
           Sora sizes, installs, and services home solar systems across the
           Philippines. Estimate your savings in minutes — free, and no login
           required.
         </p>
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+        <div className="reveal reveal-3 mt-8 flex flex-col gap-3 sm:flex-row">
           <Button href="/calculate" size="lg">
             <Calculator className="h-5 w-5" aria-hidden="true" />
             Calculate My Savings
@@ -47,7 +47,7 @@ export function Hero() {
             Book a Free Site Survey
           </Button>
         </div>
-        <p className="mt-5 text-sm text-ink-soft">
+        <p className="reveal reveal-4 mt-5 text-sm text-ink-soft">
           Free indicative estimate · Net-metering assistance included · No
           commitment
         </p>

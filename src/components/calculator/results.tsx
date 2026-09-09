@@ -33,7 +33,7 @@ function StatTile({
       <div className="text-xs font-semibold uppercase tracking-wide text-ink-soft">
         {label}
       </div>
-      <div className="mt-1 font-display text-xl font-bold">
+      <div className="mt-1 font-display text-xl font-bold tnum">
         {value}
       </div>
       {sub ? (
@@ -68,7 +68,7 @@ export function CalculatorResults({
       </div>
 
       {propertyRole === "renter" ? (
-        <p className="rounded-xl bg-sky p-3 text-sm">
+        <p className="rounded-xl bg-sand p-3 text-sm">
           Since you rent, we’ll discuss what’s possible with your landlord and
           which options make sense for your lease. Nothing here is a final
           quote.
@@ -79,7 +79,7 @@ export function CalculatorResults({
         <div className="text-xs font-semibold uppercase tracking-wide text-ink-soft">
           Estimated monthly savings
         </div>
-        <div className="mt-1 font-display text-4xl font-bold sm:text-5xl">
+        <div className="mt-1 font-display text-4xl font-bold tnum sm:text-5xl">
           {formatPhpRange(result.monthlySavingsPhp)}
           <span className="text-xl font-semibold text-ink-soft"> / month</span>
         </div>
@@ -122,7 +122,7 @@ export function CalculatorResults({
       </div>
 
       {result.battery ? (
-        <div className="rounded-2xl bg-sky p-4">
+        <div className="rounded-2xl bg-sand p-4">
           <div className="font-display font-semibold">
             Backup estimate: ~{result.battery.capacityKwh} kWh battery
           </div>
@@ -140,7 +140,7 @@ export function CalculatorResults({
         <div className="text-xs font-semibold uppercase tracking-wide text-ink-soft">
           Indicative installed cost
         </div>
-        <div className="mt-1 font-display text-xl font-bold">
+        <div className="mt-1 font-display text-xl font-bold tnum">
           {formatPhpRange(fullOffsetCost)}
           <span className="ml-2 text-sm font-normal text-ink-soft">
             for the {kwpHi} kWp full-offset system

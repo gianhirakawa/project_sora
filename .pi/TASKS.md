@@ -63,10 +63,12 @@ conceptualize an overall solar-home color theme and do a full website
 overhaul.)
 
 - [x] **Fix: Systems & Products nav dropdowns gone** (user report). Root cause: desktop dropdowns only opened on hover/focus (large touch devices at `lg`+ never triggered them) and the mobile menu rendered Systems/Products as a flat list under a non-interactive label. Fix: desktop triggers are now real disclosure buttons (hover + focus + click-toggle, `aria-expanded`/`aria-controls`, explicit panel `z-20`); mobile menu Systems/Products are proper expandable disclosures with chevron + indented sub-items; window-level Escape closes dropdown/menu with focus return
-- [ ] **Define the general theme** — write `.pi/DESIGN_THEME.md`: brand voice in pixels. Palette usage (sunrise/energy vs current flat blue-white), typography pairing/scale, section backgrounds & dividers (stop every section looking the same), imagery/icon style, button/card/chip language, subtle motion, distinctive hero + CTA treatments. Direction: warm Philippine sunrise energy + engineering trust; avoid generic SaaS defaults
-- [ ] Apply theme: globals.css tokens + header/footer + homepage
-- [ ] Apply theme: content pages (get-solar, products, packages, about, legal) + `/calculate`
-- [ ] Mobile pass + WCAG contrast check on the final theme; update TASKS.md + task-board notes
+- [x] **Define the general theme** — `.pi/DESIGN_THEME.md` ("Dawn Over the Roof"): warm Philippine sunrise energy + engineering trust. Warm cream `paper`/`sand` surfaces, dawn-sky `ink`/`dusk` darks, `sun`→`ember` sunrise gradient as the 3px **sunline** signature motif, tabular-numeral precision for stats. Cool `sky` token removed; gradients banned as large fills
+- [x] Apply theme: tokens (`paper/sand/dusk/ember/line` warmed; `bg-sunrise` utility), primitives (Button lift, Card lift + warm hover shadow, Badge/Badge sand, Section `tint` tone + dark dawn-glow + top sunline, SectionHeading sunline, Accordion hover), footer (`dusk` + sunline), header/footer + homepage restyled
+- [x] Apply theme: content pages + `/calculate` — `PageHero` sand wash + radial sun glow + top sunline; all `bg-sky`→`bg-sand` across get-solar/products/book-site-survey/calculator results; `tnum` on calculator result values
+- [x] Mobile pass + WCAG contrast check — all changes are token/utility-level, responsive classes untouched; key pairs verified ≥ 4.5:1 (ink/paper 15.5:1, ink-soft/sand 6.2:1, ink/sun CTA 9.6:1, paper/70-on-ink 4.8:1); `sun-deep` on paper is 2.2:1 and restricted to display accents per `.pi/DESIGN_THEME.md`. Verified: tsc + eslint clean, vitest 44/44, `next build` green (21 routes), prod smoke 200s, utilities confirmed in production CSS
+
+**Milestone 2.5 complete.**
 
 ## Milestone 3 — Solar calculator P0
 
@@ -188,9 +190,8 @@ Working task list, tackled one by one. Each task is self-contained and checked o
 
 Set this section at the start of active development.
 
-- Current milestone: **Milestone 2.5** — nav dropdown fix done; now: **conceptualize the overall solar-home color theme (`.pi/DESIGN_THEME.md`) and execute the website overhaul** site-wide (tokens → primitives → header/footer → homepage → content pages → `/calculate`).
-- After M2.5: **Milestone 4 — Lead capture + CRM** (persistence, anti-spam/rate limiting, consent, CRM adapter, n8n webhook, acknowledgement).
-- Last verified build: lint + typecheck clean, 44/44 vitest, `next build` green (all routes); prod smoke 200s: `/`, `/calculate`, `/book-site-survey`, `/contact`, `/about`, `/get-solar/home-solar`, `/packages`, `/products`, `/products/panels`, `/privacy`, `/terms`; `#reviews` anchor + calculate Badge verified in rendered HTML.
+- Current milestone: **Milestone 2.5 complete** (nav dropdowns restored; "Dawn Over the Roof" theme defined in `.pi/DESIGN_THEME.md` and applied site-wide). Next: **Milestone 4 — Lead capture + CRM** (persistence, anti-spam/rate limiting, consent, CRM adapter, n8n webhook, acknowledgement).
+- Last verified build (theme overhaul): tsc + eslint clean, 44/44 vitest, `next build` green (21 routes); prod smoke 200s: `/`, `/calculate`, `/get-solar/home-solar`, `/products`, `/packages`, `/about`, `/book-site-survey`; `bg-sunrise`/`tnum`/`reveal`/`grain`/`bg-dusk` confirmed in production CSS; contrast pairs verified (see M2.5 item).
 - Known blockers: None recorded
 - Note: intermittent `next start` 404s during smoke tests were traced to stale `next-server` processes holding ports from prior failed builds (not app code); always confirm no old server is listening before trusting a smoke result.
 

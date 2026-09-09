@@ -70,7 +70,7 @@ export default async function BookSiteSurveyPage({
           <ul className="mt-8 space-y-5">
             {benefits.map(({ icon: Icon, title, body }) => (
               <li key={title} className="flex gap-3">
-                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-sky">
+                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-sand">
                   <Icon className="h-5 w-5 text-ink" aria-hidden="true" />
                 </span>
                 <div>

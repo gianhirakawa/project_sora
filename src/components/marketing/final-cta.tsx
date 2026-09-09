@@ -7,7 +7,6 @@ export function FinalCta() {
     <Section
       labelledBy="final-cta-heading"
       tone="dark"
-      className="border-t border-line"
       containerClassName="flex flex-col items-center text-center"
     >
       <div className="max-w-2xl">

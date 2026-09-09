@@ -42,7 +42,7 @@ export function CalculatorTeaser() {
           />
           <div className="relative flex flex-col gap-4">
             <div className="flex items-center gap-3">
-              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-sky">
+              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-sand">
                 <ReceiptText className="h-6 w-6 text-ink" aria-hidden="true" />
               </span>
               <div>

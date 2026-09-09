@@ -156,7 +156,7 @@ export default function HomeSolarPage() {
             <li key={step.title} className="rounded-2xl border border-line bg-white p-5">
               <span
                 aria-hidden="true"
-                className="grid h-8 w-8 place-items-center rounded-full bg-sky font-display text-sm font-bold"
+                className="grid h-8 w-8 place-items-center rounded-full bg-sand font-display text-sm font-bold"
               >
                 {i + 1}
               </span>

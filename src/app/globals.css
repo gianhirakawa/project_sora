@@ -5,29 +5,55 @@
   --font-body: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
 
   /*
-   * Sora brand palette (audited in M2 theme revamp — tokens are sound, no
-   * renames). Usage contract:
-   *   paper / paper-warm  page backgrounds (default body surface)
-   *   ink               primary text on light surfaces; dark section background
-   *   ink-soft          secondary text
-   *   sun               brand accent / primary CTA background
-   *   sun-deep          accent hover state
-   *   sky               soft tint surfaces (chips, tinted sections)
-   *   moss              positive / success accent
-   *   line              hairline borders
+   * Sora brand palette — "Dawn Over the Roof" (M2.5 overhaul).
+   * Source of truth: .pi/DESIGN_THEME.md. Usage contract:
+   *   paper    default page background (warm cream)
+   *   sand     tinted sections, hover surfaces, icon tiles
+   *   ink      primary text; dark-section background (dawn sky)
+   *   dusk     footer background (night before dawn)
+   *   ink-soft secondary text
+   *   sun      brand accent / primary CTA background
+   *   sun-deep CTA hover; accent text on light surfaces (display use)
+   *   ember    sunrise orange — gradient partner to sun
+   *   moss     positive / savings accent
+   *   line     warm hairline borders
    * Semantic error color is Tailwind's built-in red-* scale (see FormErrorBanner).
+   * The cool `sky` token was removed — do not reintroduce blue tint surfaces.
    */
-  --color-paper: #faf8f4;
+  --color-paper: #faf6ee;
+  --color-sand: #f2ead9;
   --color-ink: #0c1f33;
+  --color-dusk: #081426;
   --color-ink-soft: #41586f;
   --color-sun: #ffb703;
   --color-sun-deep: #e39b00;
-  --color-sky: #eaf2f8;
-  --color-sand: #f4eee1;
+  --color-ember: #f4801f;
   --color-moss: #1f6f5c;
-  --color-line: #e3ddd2;
+  --color-line: #e5dcc8;
 
   --shadow-lift: 0 12px 32px -12px rgb(12 31 51 / 0.18);
+
+  --animate-fade-up: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/*
+ * Sunline: the site's signature motif. The sunrise gradient is an identity
+ * mark used as a thin bar (page heroes, dark sections, section eyebrows) —
+ * never as a large fill. See .pi/DESIGN_THEME.md.
+ */
+@utility bg-sunrise {
+  background-image: linear-gradient(105deg, #ffb703, #f4801f);
 }
 
 :root {
@@ -57,4 +83,46 @@ body {
 ::selection {
   background: var(--color-sun);
   color: var(--color-ink);
+}
+
+/* Tabular numerals for stats, prices, and calculator results. */
+@utility tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/*
+ * Staggered hero load reveal. `.reveal` plus `.reveal-1`…`.reveal-4`
+ * delay steps; the reduced-motion rule above neutralizes the keyframe.
+ */
+.reveal {
+  animation: var(--animate-fade-up);
+}
+.reveal-1 {
+  animation-delay: 0.1s;
+}
+.reveal-2 {
+  animation-delay: 0.2s;
+}
+.reveal-3 {
+  animation-delay: 0.3s;
+}
+.reveal-4 {
+  animation-delay: 0.4s;
+}
+
+/*
+ * Subtle film grain for the hero and dark CTA sections only.
+ * 3% feTurbulence noise — texture without the blur-blob look.
+ */
+.grain {
+  position: relative;
+}
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }

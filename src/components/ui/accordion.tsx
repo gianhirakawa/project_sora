@@ -30,7 +30,7 @@ export function Accordion({ items }: { items: FaqItem[] }) {
                 aria-expanded={open}
                 aria-controls={panelId}
                 onClick={() => setOpenIndex(open ? null : i)}
-                className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left font-display font-semibold text-ink hover:bg-sky/60 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-sun"
+                className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left font-display font-semibold text-ink hover:bg-sand/70 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-sun"
               >
                 <span>{item.question}</span>
                 <span

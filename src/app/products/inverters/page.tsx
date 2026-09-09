@@ -83,7 +83,7 @@ export default function InvertersPage() {
             <Card key={t.title} className="flex flex-col gap-3">
               <h3 className="font-display text-xl font-bold">{t.title}</h3>
               <p className="flex-1 text-sm text-ink-soft">{t.body}</p>
-              <p className="rounded-lg bg-sky px-3 py-2 text-sm font-medium">
+              <p className="rounded-lg bg-sand px-3 py-2 text-sm font-medium">
                 {t.fits}
               </p>
             </Card>

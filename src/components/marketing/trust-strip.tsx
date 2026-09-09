@@ -31,7 +31,7 @@ export function TrustStrip() {
       <Container className="grid gap-x-6 gap-y-4 py-6 sm:grid-cols-2 lg:grid-cols-4">
         {items.map(({ icon: Icon, label }) => (
           <div key={label} className="flex items-center gap-3">
-            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-sky text-ink">
+            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-sand text-ink">
               <Icon className="h-5 w-5" aria-hidden="true" />
             </span>
             <span className="text-sm font-medium leading-snug text-ink-soft">

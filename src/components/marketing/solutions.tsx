@@ -55,7 +55,7 @@ export function Solutions() {
         <div className="mt-10 grid gap-5 md:grid-cols-3">
           {solutions.map(({ icon: Icon, title, tagline, points, href }) => (
             <Card key={title} className="flex flex-col gap-4">
-              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-sky">
+              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-sand">
                 <Icon className="h-6 w-6 text-ink" aria-hidden="true" />
               </span>
               <div>

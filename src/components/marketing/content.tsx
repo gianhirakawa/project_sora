@@ -23,8 +23,16 @@ export function PageHero({
   lead: string;
 }) {
   return (
-    <header className="border-b border-line bg-sky/50">
-      <Container className="max-w-3xl py-14 sm:py-20">
+    <header className="relative border-b border-line bg-sand">
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 h-[3px] bg-sunrise"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute -top-16 right-[-80px] h-64 w-64 rounded-full bg-[radial-gradient(closest-side,rgba(255,183,3,0.22),transparent_70%)]"
+      />
+      <Container className="relative max-w-3xl py-14 sm:py-20">
         <Badge>{eyebrow}</Badge>
         <h1 className="mt-4 font-display text-4xl font-extrabold tracking-tight sm:text-5xl">
           {title}

@@ -30,7 +30,6 @@ export function HowItWorks() {
       id="how-it-works"
       labelledBy="how-it-works-heading"
       tone="dark"
-      className="border-y border-line"
     >
       <SectionHeading
         id="how-it-works-heading"
