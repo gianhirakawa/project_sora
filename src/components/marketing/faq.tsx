@@ -1,4 +1,5 @@
-import { Container } from "../ui/container";
+import { Section } from "../ui/section";
+import { SectionHeading } from "../ui/section-heading";
 import { Accordion } from "../ui/accordion";
 
 /**
@@ -41,34 +42,28 @@ const items = [
 
 export function Faq() {
   return (
-    <section
-      id="faq"
-      aria-labelledby="faq-heading"
-      className="scroll-mt-20 bg-white"
-    >
-      <Container className="py-16 sm:py-20">
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">
-          <div>
-            <h2
-              id="faq-heading"
-              className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl"
-            >
-              Questions, answered straight
-            </h2>
-            <p className="mt-3 text-ink-soft">
-              Still unsure about something?{" "}
+    <Section id="faq" labelledBy="faq-heading" tone="surface">
+      <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">
+        <div>
+          <SectionHeading
+            id="faq-heading"
+            title="Questions, answered straight"
+            intro={
+              <>
+                Still unsure about something?{" "}
               <a
                 href="/contact"
                 className="font-semibold text-ink underline underline-offset-4 hover:decoration-sun hover:decoration-2"
               >
                 Ask us directly
               </a>{" "}
-              — a real person replies.
-            </p>
+                — a real person replies.
+              </>
+            }
+          />
           </div>
           <Accordion items={items} />
         </div>
-      </Container>
-    </section>
+    </Section>
   );
 }

@@ -1,4 +1,5 @@
-import { Container } from "../ui/container";
+import { Section } from "../ui/section";
+import { SectionHeading } from "../ui/section-heading";
 import { Card } from "../ui/card";
 
 /**
@@ -48,16 +49,10 @@ const reviews = [
 
 export function WhySora() {
   return (
-    <section aria-labelledby="why-heading">
-      <Container className="py-16 sm:py-20">
-        <div className="grid gap-10 lg:grid-cols-2">
-          <div>
-            <h2
-              id="why-heading"
-              className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl"
-            >
-              Why homeowners pick Sora
-            </h2>
+    <Section labelledBy="why-heading">
+      <div className="grid gap-10 lg:grid-cols-2">
+        <div>
+          <SectionHeading id="why-heading" title="Why homeowners pick Sora" />
             <div className="mt-8 grid gap-6 sm:grid-cols-2">
               {reasons.map((reason) => (
                 <div key={reason.title}>
@@ -70,7 +65,7 @@ export function WhySora() {
             </div>
           </div>
 
-          <div>
+          <div id="reviews" className="scroll-mt-20">
             <h3 id="reviews-heading" className="font-display text-xl font-bold">
               What customers say
             </h3>
@@ -88,7 +83,6 @@ export function WhySora() {
             </div>
           </div>
         </div>
-      </Container>
-    </section>
+    </Section>
   );
 }

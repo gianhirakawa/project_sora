@@ -11,6 +11,7 @@ import {
   Field,
   TextField,
   SelectField,
+  TextAreaField,
   FormErrorBanner,
   FormSuccessBanner,
 } from "../ui/field";
@@ -181,13 +182,13 @@ export function BookSiteSurveyForm({ prefill }: { prefill?: SurveyFormPrefill })
         error={fieldErrors.notes}
         hint="Roof type, outage frequency, existing solar — anything helpful."
       >
-        <textarea
+        <TextAreaField
           id="survey-notes"
           name="notes"
           rows={4}
+          className="min-h-24"
           value={values.notes}
           onChange={set("notes")}
-          className="min-h-24 w-full rounded-xl border border-line bg-white px-4 py-3 text-ink placeholder:text-ink-soft/60 focus:border-ink focus:outline-2 focus:-outline-offset-1 focus:outline-ink/30"
         />
       </Field>
 

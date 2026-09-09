@@ -1,19 +1,24 @@
 import { Calculator, ClipboardCheck } from "lucide-react";
-import { Container } from "../ui/container";
+import { Section } from "../ui/section";
 import { Button } from "../ui/button";
 
 export function FinalCta() {
   return (
-    <section
-      aria-label="Get started"
-      className="border-t border-line bg-ink text-paper"
+    <Section
+      labelledBy="final-cta-heading"
+      tone="dark"
+      className="border-t border-line"
+      containerClassName="flex flex-col items-center text-center"
     >
-      <Container className="flex flex-col items-center py-16 text-center sm:py-20">
-        <h2 className="max-w-2xl font-display text-3xl font-extrabold tracking-tight sm:text-4xl">
+      <div className="max-w-2xl">
+        <h2
+          id="final-cta-heading"
+          className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl"
+        >
           Your electric bill already knows what to build.{" "}
           <span className="text-sun">Let&apos;s size it.</span>
         </h2>
-        <p className="mt-4 max-w-xl text-paper/70">
+        <p className="mt-4 text-paper/70">
           Two minutes for an indicative estimate, or skip straight to the free
           site survey — either way, no commitment and no login.
         </p>
@@ -32,7 +37,7 @@ export function FinalCta() {
             Book a Free Site Survey
           </Button>
         </div>
-      </Container>
-    </section>
+      </div>
+    </Section>
   );
 }

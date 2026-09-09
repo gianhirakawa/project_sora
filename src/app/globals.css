@@ -4,7 +4,19 @@
   --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
   --font-body: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
 
-  /* Sora brand palette */
+  /*
+   * Sora brand palette (audited in M2 theme revamp — tokens are sound, no
+   * renames). Usage contract:
+   *   paper / paper-warm  page backgrounds (default body surface)
+   *   ink               primary text on light surfaces; dark section background
+   *   ink-soft          secondary text
+   *   sun               brand accent / primary CTA background
+   *   sun-deep          accent hover state
+   *   sky               soft tint surfaces (chips, tinted sections)
+   *   moss              positive / success accent
+   *   line              hairline borders
+   * Semantic error color is Tailwind's built-in red-* scale (see FormErrorBanner).
+   */
   --color-paper: #faf8f4;
   --color-ink: #0c1f33;
   --color-ink-soft: #41586f;
@@ -15,6 +27,10 @@
   --color-line: #e3ddd2;
 
   --shadow-lift: 0 12px 32px -12px rgb(12 31 51 / 0.18);
+}
+
+:root {
+  color-scheme: light;
 }
 
 html {

@@ -3,6 +3,8 @@ import { AlertTriangle, Calculator, ClipboardCheck } from "lucide-react";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import { Container } from "../ui/container";
+import { Section } from "../ui/section";
+import { SectionHeading } from "../ui/section-heading";
 import { Accordion, type FaqItem } from "../ui/accordion";
 
 /**
@@ -22,7 +24,7 @@ export function PageHero({
 }) {
   return (
     <header className="border-b border-line bg-sky/50">
-      <Container className="max-w-3xl py-12 sm:py-16">
+      <Container className="max-w-3xl py-14 sm:py-20">
         <Badge>{eyebrow}</Badge>
         <h1 className="mt-4 font-display text-4xl font-extrabold tracking-tight sm:text-5xl">
           {title}
@@ -57,20 +59,10 @@ export function PageSection({
   className?: string;
 }) {
   return (
-    <section id={id} aria-labelledby={`${id}-heading`} className={`scroll-mt-20 ${className}`}>
-      <Container className="py-14 sm:py-16">
-        <div className="max-w-2xl">
-          <h2
-            id={`${id}-heading`}
-            className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl"
-          >
-            {title}
-          </h2>
-          {intro && <p className="mt-3 text-lg text-ink-soft">{intro}</p>}
-        </div>
-        <div className="mt-8">{children}</div>
-      </Container>
-    </section>
+    <Section id={id} labelledBy={`${id}-heading`} className={className}>
+      <SectionHeading id={`${id}-heading`} title={title} intro={intro} />
+      <div className="mt-8">{children}</div>
+    </Section>
   );
 }
 
@@ -106,15 +98,11 @@ export function PageFaq({
   className?: string;
 }) {
   return (
-    <section aria-label="Frequently asked questions" className={className}>
-      <Container className="py-14 sm:py-16">
-        <h2 className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl">
-          Common questions
-        </h2>
-        <div className="mt-8">
-          <Accordion items={items} />
-        </div>
-      </Container>
-    </section>
+    <Section labelledBy="page-faq-heading" className={className}>
+      <SectionHeading id="page-faq-heading" title="Common questions" />
+      <div className="mt-8">
+        <Accordion items={items} />
+      </div>
+    </Section>
   );
 }

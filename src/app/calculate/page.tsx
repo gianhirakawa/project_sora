@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { Badge } from "@/components/ui/badge";
 import { Container } from "@/components/ui/container";
+import { sectionRhythm } from "@/components/ui/section";
 import { CalculatorWidget } from "@/components/calculator/calculator-widget";
 
 export const metadata: Metadata = {
@@ -10,11 +12,9 @@ export const metadata: Metadata = {
 
 export default function CalculatePage() {
   return (
-    <Container className="py-12 sm:py-16">
+    <Container className={sectionRhythm}>
       <header className="max-w-2xl">
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-sky px-3 py-1 text-xs font-semibold uppercase tracking-wide text-ink-soft">
-          Free · No login · Bill-first
-        </span>
+        <Badge>Free · No login · Bill-first</Badge>
         <h1 className="mt-4 font-display text-4xl font-extrabold tracking-tight sm:text-5xl">
           Solar Savings Calculator
         </h1>

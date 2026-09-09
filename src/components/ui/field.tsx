@@ -72,6 +72,26 @@ export function TextField({
   );
 }
 
+export function TextAreaField({
+  id,
+  error,
+  className = "",
+  ...props
+}: React.TextareaHTMLAttributes<HTMLTextAreaElement> & {
+  id: string;
+  error?: string;
+}) {
+  return (
+    <textarea
+      id={id}
+      aria-invalid={error ? true : undefined}
+      aria-describedby={error ? `${id}-error` : undefined}
+      className={`${inputBase} py-3 ${className} ${error ? "border-red-400" : ""}`}
+      {...props}
+    />
+  );
+}
+
 export function SelectField({
   id,
   error,

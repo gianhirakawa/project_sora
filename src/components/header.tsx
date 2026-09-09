@@ -57,11 +57,15 @@ export function Header() {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
+  // Mobile menu links: unified tap-target geometry (M2 theme revamp).
+  const mobileLinkBase =
+    "flex min-h-11 w-full items-center rounded-xl px-3 py-2.5 text-ink hover:bg-sky focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-sun";
+
   const sectionLink = (label: string, href: string) => (
     <a
       href={href}
       onClick={() => setOpen(false)}
-      className="block rounded-xl px-3 py-3 font-display font-semibold text-ink hover:bg-sky focus-visible:outline-2 focus-visible:outline-sun"
+      className={`${mobileLinkBase} font-display text-base font-semibold`}
     >
       {label}
     </a>
@@ -195,7 +199,7 @@ export function Header() {
                       key={item.href}
                       href={item.href}
                       onClick={() => setOpen(false)}
-                      className="block rounded-xl px-5 py-2.5 text-sm font-medium text-ink hover:bg-sky focus-visible:outline-2 focus-visible:outline-sun"
+                      className={`${mobileLinkBase} text-sm font-medium`}
                     >
                       {item.label}
                     </a>

@@ -6,6 +6,7 @@ import { Button } from "../ui/button";
 import {
   Field,
   TextField,
+  TextAreaField,
   FormErrorBanner,
   FormSuccessBanner,
 } from "../ui/field";
@@ -91,14 +92,14 @@ export function ContactForm() {
       </div>
 
       <Field label="How can we help?" htmlFor="contact-message" error={fieldErrors.message}>
-        <textarea
+        <TextAreaField
           id="contact-message"
           name="message"
           rows={5}
+          className="min-h-28"
           value={values.message}
           onChange={set("message")}
           required
-          className="min-h-28 w-full rounded-xl border border-line bg-white px-4 py-3 text-ink placeholder:text-ink-soft/60 focus:border-ink focus:outline-2 focus:-outline-offset-1 focus:outline-ink/30"
         />
       </Field>
 

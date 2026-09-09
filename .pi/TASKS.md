@@ -50,7 +50,21 @@ Status markers:
 - [x] Mounting & Protection page — `/products/mounting-protection` (racking, roof structure, grounding, typhoon honesty)
 - [x] Monitoring / Smart Energy page — `/products/monitoring`
 - [x] About / Team / Credentials / Service Areas — `/about` page (draft team, credentials, service areas — flagged for business confirmation); "About Us" added to header nav + footer Company group
-- [ ] **Overall site theme revamp** — consistent visual theme across all shipped pages (M1–M3): audit design tokens (colors, typography, spacing) in `globals`/Tailwind config, align primitives (Button, Card, Badge, Accordion, form fields), unify section rhythm/spacing, header/footer polish, mobile pass on every route
+- [x] **Overall site theme revamp** — consistent visual theme across all shipped pages (M1–M3): audit design tokens (colors, typography, spacing) in `globals`/Tailwind config, align primitives (Button, Card, Badge, Accordion, form fields), unify section rhythm/spacing, header/footer polish, mobile pass on every route. Implemented via new `Section` (`sectionRhythm = py-14 sm:py-20`) + `SectionHeading` primitives adopted by all homepage sections and content-page `PageHero`/`PageSection`/`PageFaq`; `TextAreaField` added to field primitives (used by both forms); raw `accent-[#0c1f33]` replaced with `accent-ink`; mobile menu tap targets unified; `color-scheme: light` set; homepage `#reviews` anchor added and footer link restored; `/calculate` rhythm + `Badge` aligned.
+
+## Milestone 2.5 — Nav fix + distinctive brand theme (next work)
+
+Goal: two follow-ups before any new feature milestones. (1) Restore the
+Systems/Products nav dropdowns, reported gone. (2) The site reads as a
+generic template despite the M2 structure/rhythm unification — define a
+distinctive, cohesive visual identity for a Philippine residential solar
+brand and apply it site-wide.
+
+- [ ] **Fix: Systems & Products nav dropdowns gone** (user report). Desktop hover dropdowns still exist in `header.tsx` (open on hover/focus of Systems/Products); investigate what the user actually sees: below `lg` the whole nav collapses to the hamburger and Systems/Products render as a flat list with no disclosure; confirm no clipping/z-index issue on desktop; fix so dropdowns work on desktop and get a proper expandable disclosure in the mobile menu
+- [ ] **Define the general theme** — write `.pi/DESIGN_THEME.md`: brand voice in pixels. Palette usage (sunrise/energy vs current flat blue-white), typography pairing/scale, section backgrounds & dividers (stop every section looking the same), imagery/icon style, button/card/chip language, subtle motion, distinctive hero + CTA treatments. Direction: warm Philippine sunrise energy + engineering trust; avoid generic SaaS defaults
+- [ ] Apply theme: globals.css tokens + header/footer + homepage
+- [ ] Apply theme: content pages (get-solar, products, packages, about, legal) + `/calculate`
+- [ ] Mobile pass + WCAG contrast check on the final theme; update TASKS.md + task-board notes
 
 ## Milestone 3 — Solar calculator P0
 
@@ -172,9 +186,9 @@ Working task list, tackled one by one. Each task is self-contained and checked o
 
 Set this section at the start of active development.
 
-- Current milestone: **Milestone 2 — overall site theme revamp** (last unchecked M2 item).
-- Next up after that: **Milestone 4 — Lead capture + CRM** (persistence, anti-spam/rate limiting, consent, CRM adapter, n8n webhook, acknowledgement).
-- Last verified build: lint + typecheck clean, 44/44 vitest, `next build` green (21 routes incl. `/about`); prod smoke: `/about` 200 (title "About Us | Sora Solar", all sections present), `/` `/calculate` `/products` `/packages` `/book-site-survey` `/contact` all 200, About Us link rendered in header + footer.
+- Current milestone: **Milestone 2.5** — next task: **fix Systems/Products nav dropdowns** (reported gone; see item above), then **define + apply the general site theme** (site currently reads generic).
+- After M2.5: **Milestone 4 — Lead capture + CRM** (persistence, anti-spam/rate limiting, consent, CRM adapter, n8n webhook, acknowledgement).
+- Last verified build: lint + typecheck clean, 44/44 vitest, `next build` green (all routes); prod smoke 200s: `/`, `/calculate`, `/book-site-survey`, `/contact`, `/about`, `/get-solar/home-solar`, `/packages`, `/products`, `/products/panels`, `/privacy`, `/terms`; `#reviews` anchor + calculate Badge verified in rendered HTML.
 - Known blockers: None recorded
 - Note: intermittent `next start` 404s during smoke tests were traced to stale `next-server` processes holding ports from prior failed builds (not app code); always confirm no old server is listening before trusting a smoke result.
 

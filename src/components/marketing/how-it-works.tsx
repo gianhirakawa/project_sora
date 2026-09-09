@@ -1,4 +1,5 @@
-import { Container } from "../ui/container";
+import { Section } from "../ui/section";
+import { SectionHeading } from "../ui/section-heading";
 
 const steps = [
   {
@@ -25,25 +26,20 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section
+    <Section
       id="how-it-works"
-      aria-labelledby="how-it-works-heading"
-      className="scroll-mt-20 border-y border-line bg-ink text-paper"
+      labelledBy="how-it-works-heading"
+      tone="dark"
+      className="border-y border-line"
     >
-      <Container className="py-16 sm:py-20">
-        <div className="max-w-2xl">
-          <h2
-            id="how-it-works-heading"
-            className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl"
-          >
-            From estimate to installed — four steps.
-          </h2>
-          <p className="mt-3 text-paper/70">
-            No account, no jargon, and you always know what happens next.
-          </p>
-        </div>
+      <SectionHeading
+        id="how-it-works-heading"
+        dark
+        title="From estimate to installed — four steps."
+        intro="No account, no jargon, and you always know what happens next."
+      />
 
-        <ol className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      <ol className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((step) => (
             <li
               key={step.n}
@@ -59,7 +55,6 @@ export function HowItWorks() {
             </li>
           ))}
         </ol>
-      </Container>
-    </section>
+    </Section>
   );
 }

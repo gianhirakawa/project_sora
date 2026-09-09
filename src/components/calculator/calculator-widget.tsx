@@ -90,7 +90,7 @@ const DAYTIME_USAGE_LABELS: Record<DaytimeUsage, string> = {
 const radioGroupClass = "space-y-1";
 const radioLabelClass =
   "flex min-h-11 cursor-pointer items-center gap-2 rounded-xl px-1";
-const radioInputClass = "size-4 accent-[#0c1f33]";
+const radioInputClass = "size-4 accent-ink";
 
 function RadioGroup({
   legend,

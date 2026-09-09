@@ -23,7 +23,7 @@ const groups: { title: string; links: { label: string; href: string }[] }[] = [
     links: [
       { label: "About Us", href: "/about" },
       { label: "Our Projects", href: "/#projects" },
-      { label: "Reviews", href: "/#reviews" },
+      { label: "Customer Reviews", href: "/#reviews" },
       { label: "FAQ", href: "/#faq" },
     ],
   },
@@ -68,7 +68,7 @@ export function Footer() {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-sm text-paper/80 hover:text-paper focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-sun"
+                    className="text-sm text-paper/80 underline-offset-4 hover:text-paper hover:underline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-sun"
                   >
                     {link.label}
                   </a>

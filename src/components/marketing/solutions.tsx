@@ -1,5 +1,6 @@
 import { ArrowRight, Battery, PlugZap, Trees } from "lucide-react";
-import { Container } from "../ui/container";
+import { Section } from "../ui/section";
+import { SectionHeading } from "../ui/section-heading";
 import { Card } from "../ui/card";
 
 /**
@@ -44,20 +45,12 @@ const solutions = [
 
 export function Solutions() {
   return (
-    <section id="solutions" aria-labelledby="solutions-heading" className="scroll-mt-20 bg-white">
-      <Container className="py-16 sm:py-20">
-        <div className="max-w-2xl">
-          <h2
-            id="solutions-heading"
-            className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl"
-          >
-            Three ways to go solar. One fits your home.
-          </h2>
-          <p className="mt-3 text-ink-soft">
-            Every system is sized to your bill, roof, and goals — not to a
-            catalog template.
-          </p>
-        </div>
+    <Section id="solutions" labelledBy="solutions-heading" tone="surface">
+      <SectionHeading
+        id="solutions-heading"
+        title="Three ways to go solar. One fits your home."
+        intro="Every system is sized to your bill, roof, and goals — not to a catalog template."
+      />
 
         <div className="mt-10 grid gap-5 md:grid-cols-3">
           {solutions.map(({ icon: Icon, title, tagline, points, href }) => (
@@ -97,7 +90,6 @@ export function Solutions() {
             Upgrade or expand your existing system →
           </a>
         </p>
-      </Container>
-    </section>
+    </Section>
   );
 }

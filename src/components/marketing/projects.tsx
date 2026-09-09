@@ -1,5 +1,6 @@
 import { MapPin } from "lucide-react";
-import { Container } from "../ui/container";
+import { Section } from "../ui/section";
+import { SectionHeading } from "../ui/section-heading";
 import { Card } from "../ui/card";
 
 /**
@@ -30,23 +31,12 @@ const projects = [
 
 export function Projects() {
   return (
-    <section
-      id="projects"
-      aria-labelledby="projects-heading"
-      className="scroll-mt-20 bg-white"
-    >
-      <Container className="py-16 sm:py-20">
-        <div className="max-w-2xl">
-          <h2
-            id="projects-heading"
-            className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl"
-          >
-            Real roofs, real results
-          </h2>
-          <p className="mt-3 text-ink-soft">
-            A sample of the homes we&apos;ve put to work for the sun.
-          </p>
-        </div>
+    <Section id="projects" labelledBy="projects-heading" tone="surface">
+      <SectionHeading
+        id="projects-heading"
+        title="Real roofs, real results"
+        intro="A sample of the homes we've put to work for the sun."
+      />
 
         <div className="mt-10 grid gap-5 md:grid-cols-3">
           {projects.map((project) => (
@@ -63,8 +53,7 @@ export function Projects() {
               </p>
             </Card>
           ))}
-        </div>
-      </Container>
-    </section>
+      </div>
+    </Section>
   );
 }
