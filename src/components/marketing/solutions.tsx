@@ -87,6 +87,16 @@ export function Solutions() {
             </Card>
           ))}
         </div>
+
+        <p className="mt-8 text-sm text-ink-soft">
+          Already have solar?{" "}
+          <a
+            href="/get-solar/upgrade-solar"
+            className="font-semibold text-ink underline underline-offset-4 hover:decoration-sun hover:decoration-2 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-sun"
+          >
+            Upgrade or expand your existing system →
+          </a>
+        </p>
       </Container>
     </section>
   );
