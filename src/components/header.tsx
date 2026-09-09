@@ -35,6 +35,7 @@ const navEntries: NavEntry[] = [
   },
   { label: "Packages", href: "/packages" },
   { label: "How It Works", href: "/#how-it-works" },
+  { label: "About Us", href: "/about" },
   { label: "FAQ", href: "/#faq" },
 ];
 

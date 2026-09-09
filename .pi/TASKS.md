@@ -49,7 +49,7 @@ Status markers:
 - [x] Batteries page — `/products/batteries` (two legitimate uses, load-list sizing, trade-offs)
 - [x] Mounting & Protection page — `/products/mounting-protection` (racking, roof structure, grounding, typhoon honesty)
 - [x] Monitoring / Smart Energy page — `/products/monitoring`
-- [ ] About / Team / Credentials / Service Areas
+- [x] About / Team / Credentials / Service Areas — `/about` page (draft team, credentials, service areas — flagged for business confirmation); "About Us" added to header nav + footer Company group
 
 ## Milestone 3 — Solar calculator P0
 
@@ -171,13 +171,15 @@ Working task list, tackled one by one. Each task is self-contained and checked o
 
 Set this section at the start of active development.
 
-- Current milestone: **Milestone 3 — COMPLETE (T1–T9).** Bill-first calculator → indicative results → prefilled site-survey booking, with GA4-safe analytics. No PII in URLs/analytics.
-- Current task: **Milestone 2 in progress** — system pages + Packages & Pricing done; next: products pages (6), then About/service-areas + nav update.
-- M2 chunk plan: (1) system pages ✅ → (2) Packages & Pricing ✅ → (3) products: overview/panels/inverters/batteries/mounting/monitoring → (4) About + credentials + service areas, header/footer nav updated
-- Last verified build: 2026-07-22 — lint + typecheck clean, 44/44 vitest, `next build` green; prod smoke: `/calculate` 200 (form+CTA), `/book-site-survey` prefill SSR verified (banner/city/role/interest/notes), `?evil=hacked` rejected (no prefill)
+- Current milestone: **Milestone 2 — COMPLETE.** All system, packages, products, and About pages shipped with header/footer nav wired.
+- Next up: **Milestone 4 — Lead capture + CRM** (persistence, anti-spam/rate limiting, consent, CRM adapter, n8n webhook, acknowledgement).
+- Last verified build: lint + typecheck clean, 44/44 vitest, `next build` green (21 routes incl. `/about`); prod smoke: `/about` 200 (title "About Us | Sora Solar", all sections present), `/` `/calculate` `/products` `/packages` `/book-site-survey` `/contact` all 200, About Us link rendered in header + footer.
 - Known blockers: None recorded
+- Note: intermittent `next start` 404s during smoke tests were traced to stale `next-server` processes holding ports from prior failed builds (not app code); always confirm no old server is listening before trusting a smoke result.
 
 ### Content sign-off needed (does not block build)
 
 - Trust strip claims, package names/prices, project case studies, testimonials
   are DRAFT copy flagged in component comments — replace before launch.
+- `/about` team names, credentials (e.g. ERSA/licensing), and service areas are
+  placeholders — confirm with the business before launch.

@@ -21,6 +21,7 @@ const groups: { title: string; links: { label: string; href: string }[] }[] = [
   {
     title: "Company",
     links: [
+      { label: "About Us", href: "/about" },
       { label: "Our Projects", href: "/#projects" },
       { label: "Reviews", href: "/#reviews" },
       { label: "FAQ", href: "/#faq" },
