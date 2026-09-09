@@ -7,7 +7,7 @@ const groups: { title: string; links: { label: string; href: string }[] }[] = [
     title: "Estimate",
     links: [
       { label: "Savings Calculator", href: "/calculate" },
-      { label: "Packages & Pricing", href: "/#packages" },
+      { label: "Packages & Pricing", href: "/packages" },
     ],
   },
   {

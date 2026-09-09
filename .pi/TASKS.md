@@ -42,7 +42,7 @@ Status markers:
 - [x] Solar + Battery page — `/get-solar/solar-battery` (hybrid: backup load-list framing, what's included, honest trade-offs, FAQ)
 - [x] Off-grid page — `/get-solar/off-grid` (self-contained sizing, load planning, no-net-metering note, FAQ)
 - [x] Upgrade Existing Solar page — `/get-solar/upgrade-solar` (4 common upgrades, what to bring to survey, third-party systems, FAQ); entry link added below homepage solution cards
-- [ ] Packages & Pricing page
+- [x] Packages & Pricing page — `/packages` (shared PackageCard + package-options data reused by homepage; what's included in every package, why we quote ranges, price assumptions, financing FAQ); header + footer + homepage link to it
 - [ ] Products overview
 - [ ] Solar Panels page
 - [ ] Inverters page
@@ -172,8 +172,8 @@ Working task list, tackled one by one. Each task is self-contained and checked o
 Set this section at the start of active development.
 
 - Current milestone: **Milestone 3 — COMPLETE (T1–T9).** Bill-first calculator → indicative results → prefilled site-survey booking, with GA4-safe analytics. No PII in URLs/analytics.
-- Current task: **Milestone 2 in progress** — system pages done (home-solar, solar-battery, off-grid, upgrade-solar); next: Packages & Pricing page, then products pages (6), then About/service-areas.
-- M2 chunk plan: (1) system pages ✅ → (2) Packages & Pricing → (3) products: overview/panels/inverters/batteries/mounting/monitoring → (4) About + credentials + service areas, header/footer nav updated
+- Current task: **Milestone 2 in progress** — system pages + Packages & Pricing done; next: products pages (6), then About/service-areas + nav update.
+- M2 chunk plan: (1) system pages ✅ → (2) Packages & Pricing ✅ → (3) products: overview/panels/inverters/batteries/mounting/monitoring → (4) About + credentials + service areas, header/footer nav updated
 - Last verified build: 2026-07-22 — lint + typecheck clean, 44/44 vitest, `next build` green; prod smoke: `/calculate` 200 (form+CTA), `/book-site-survey` prefill SSR verified (banner/city/role/interest/notes), `?evil=hacked` rejected (no prefill)
 - Known blockers: None recorded
 
