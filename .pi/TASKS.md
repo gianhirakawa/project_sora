@@ -50,6 +50,7 @@ Status markers:
 - [x] Mounting & Protection page — `/products/mounting-protection` (racking, roof structure, grounding, typhoon honesty)
 - [x] Monitoring / Smart Energy page — `/products/monitoring`
 - [x] About / Team / Credentials / Service Areas — `/about` page (draft team, credentials, service areas — flagged for business confirmation); "About Us" added to header nav + footer Company group
+- [ ] **Overall site theme revamp** — consistent visual theme across all shipped pages (M1–M3): audit design tokens (colors, typography, spacing) in `globals`/Tailwind config, align primitives (Button, Card, Badge, Accordion, form fields), unify section rhythm/spacing, header/footer polish, mobile pass on every route
 
 ## Milestone 3 — Solar calculator P0
 
@@ -171,8 +172,8 @@ Working task list, tackled one by one. Each task is self-contained and checked o
 
 Set this section at the start of active development.
 
-- Current milestone: **Milestone 2 — COMPLETE.** All system, packages, products, and About pages shipped with header/footer nav wired.
-- Next up: **Milestone 4 — Lead capture + CRM** (persistence, anti-spam/rate limiting, consent, CRM adapter, n8n webhook, acknowledgement).
+- Current milestone: **Milestone 2 — overall site theme revamp** (last unchecked M2 item).
+- Next up after that: **Milestone 4 — Lead capture + CRM** (persistence, anti-spam/rate limiting, consent, CRM adapter, n8n webhook, acknowledgement).
 - Last verified build: lint + typecheck clean, 44/44 vitest, `next build` green (21 routes incl. `/about`); prod smoke: `/about` 200 (title "About Us | Sora Solar", all sections present), `/` `/calculate` `/products` `/packages` `/book-site-survey` `/contact` all 200, About Us link rendered in header + footer.
 - Known blockers: None recorded
 - Note: intermittent `next start` 404s during smoke tests were traced to stale `next-server` processes holding ports from prior failed builds (not app code); always confirm no old server is listening before trusting a smoke result.
