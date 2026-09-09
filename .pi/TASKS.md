@@ -43,12 +43,12 @@ Status markers:
 - [x] Off-grid page — `/get-solar/off-grid` (self-contained sizing, load planning, no-net-metering note, FAQ)
 - [x] Upgrade Existing Solar page — `/get-solar/upgrade-solar` (4 common upgrades, what to bring to survey, third-party systems, FAQ); entry link added below homepage solution cards
 - [x] Packages & Pricing page — `/packages` (shared PackageCard + package-options data reused by homepage; what's included in every package, why we quote ranges, price assumptions, financing FAQ); header + footer + homepage link to it
-- [ ] Products overview
-- [ ] Solar Panels page
-- [ ] Inverters page
-- [ ] Batteries page
-- [ ] Mounting & Protection page
-- [ ] Monitoring / Smart Energy page
+- [x] Products overview — `/products` (five-part system map, how-we-specify approach)
+- [x] Solar Panels page — `/products/panels`
+- [x] Inverters page — `/products/inverters` (grid-tied vs hybrid, brownout behavior)
+- [x] Batteries page — `/products/batteries` (two legitimate uses, load-list sizing, trade-offs)
+- [x] Mounting & Protection page — `/products/mounting-protection` (racking, roof structure, grounding, typhoon honesty)
+- [x] Monitoring / Smart Energy page — `/products/monitoring`
 - [ ] About / Team / Credentials / Service Areas
 
 ## Milestone 3 — Solar calculator P0
