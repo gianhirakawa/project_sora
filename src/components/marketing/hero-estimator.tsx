@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { ACTIVE_ASSUMPTION_SET } from "@/features/calculator/assumptions";
@@ -45,6 +45,99 @@ function estimate(bill: number): CalculatorResult {
     daytimeUsage: "medium",
     goal: "savings",
   });
+}
+
+/**
+ * Motion hooks — port of the v2 draft's count-up (`animateTo`) with the
+ * site-wide reduced-motion contract (instant values, no rAF work).
+ */
+function usePrefersReducedMotion(): boolean {
+  const [reduced, setReduced] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReduced(mq.matches);
+    const onChange = (e: MediaQueryListEvent) => setReduced(e.matches);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
+
+  return reduced;
+}
+
+/**
+ * Eases a number from 0 up to `target` (700ms, ease-out cubic) and restarts
+ * on every target change — the range-chip "count-up" from the v2 draft.
+ */
+function useAnimatedNumber(target: number, duration = 700): number {
+  const reduced = usePrefersReducedMotion();
+  const [value, setValue] = useState(0);
+
+  useEffect(() => {
+    if (reduced) {
+      setValue(target);
+      return;
+    }
+    const t0 = performance.now();
+    let raf = 0;
+    const step = (now: number) => {
+      const p = Math.min((now - t0) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      setValue(target * eased);
+      if (p < 1) raf = requestAnimationFrame(step);
+    };
+    raf = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(raf);
+  }, [target, duration, reduced]);
+
+  return value;
+}
+
+/**
+ * The three big result stats. Every figure counts up from zero whenever the
+ * estimate changes (chip click or live typing), matching the v2 draft.
+ */
+function EstimateStats({ result }: { result: CalculatorResult }) {
+  const kwMin = useAnimatedNumber(result.systemKwp[0]);
+  const kwMax = useAnimatedNumber(result.systemKwp[1]);
+  const saveLo = useAnimatedNumber(result.monthlySavingsPhp[0]);
+  const saveHi = useAnimatedNumber(result.monthlySavingsPhp[1]);
+  const pbLo = useAnimatedNumber(result.paybackYears[0]);
+  const pbHi = useAnimatedNumber(result.paybackYears[1]);
+
+  return (
+    <div className="grid gap-4 p-5 sm:grid-cols-3">
+      <div>
+        <p className="text-[11px] font-semibold uppercase tracking-wider text-paper/60">
+          Indicative size
+        </p>
+        <p className="tnum mt-1 font-display text-2xl font-extrabold text-sun">
+          {kwp(kwMin)}–{kwp(kwMax)} kW
+        </p>
+        <p className="mt-0.5 text-xs text-paper/60">
+          {result.panelCount[0]}–{result.panelCount[1]} panels
+        </p>
+      </div>
+      <div>
+        <p className="text-[11px] font-semibold uppercase tracking-wider text-paper/60">
+          Monthly savings
+        </p>
+        <p className="tnum mt-1 font-display text-2xl font-extrabold">
+          {pesoK(saveLo)} – {pesoK(saveHi)}
+        </p>
+        <p className="mt-0.5 text-xs text-paper/60">range, before survey</p>
+      </div>
+      <div>
+        <p className="text-[11px] font-semibold uppercase tracking-wider text-paper/60">
+          Simple payback
+        </p>
+        <p className="tnum mt-1 font-display text-2xl font-extrabold">
+          {pbLo.toFixed(1)}–{pbHi.toFixed(1)}
+        </p>
+        <p className="mt-0.5 text-xs text-paper/60">years, indicative</p>
+      </div>
+    </div>
+  );
 }
 
 /**
@@ -170,44 +263,20 @@ export function HeroEstimator() {
         ))}
       </div>
 
+      {/* Result card. The wrapper is always mounted and animates
+          grid-template-rows 0fr → 1fr, so the card expands fluidly (fast,
+          ~300ms) instead of popping in. Reduced-motion is neutralized by
+          the global transition-duration override in globals.css. */}
+      <div
+        className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out ${
+          result ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+        }`}
+      >
+        <div className="overflow-hidden">
       {result && (
         <div className="mt-4 overflow-hidden rounded-2xl bg-ink text-paper">
           <div aria-hidden="true" className="h-[3px] w-full bg-sunrise" />
-          <div className="grid gap-4 p-5 sm:grid-cols-3">
-            <div>
-              <p className="text-[11px] font-semibold uppercase tracking-wider text-paper/60">
-                Indicative size
-              </p>
-              <p className="tnum mt-1 font-display text-2xl font-extrabold text-sun">
-                {kwp(result.systemKwp[0])}–{kwp(result.systemKwp[1])} kW
-              </p>
-              <p className="mt-0.5 text-xs text-paper/60">
-                {result.panelCount[0]}–{result.panelCount[1]} panels
-              </p>
-            </div>
-            <div>
-              <p className="text-[11px] font-semibold uppercase tracking-wider text-paper/60">
-                Monthly savings
-              </p>
-              <p className="tnum mt-1 font-display text-2xl font-extrabold">
-                {pesoK(result.monthlySavingsPhp[0])} –{" "}
-                {pesoK(result.monthlySavingsPhp[1])}
-              </p>
-              <p className="mt-0.5 text-xs text-paper/60">
-                range, before survey
-              </p>
-            </div>
-            <div>
-              <p className="text-[11px] font-semibold uppercase tracking-wider text-paper/60">
-                Simple payback
-              </p>
-              <p className="tnum mt-1 font-display text-2xl font-extrabold">
-                {result.paybackYears[0].toFixed(1)}–
-                {result.paybackYears[1].toFixed(1)}
-              </p>
-              <p className="mt-0.5 text-xs text-paper/60">years, indicative</p>
-            </div>
-          </div>
+          <EstimateStats result={result} />
 
           <div className="flex flex-col gap-2 border-t border-paper/10 p-5 pt-4 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-xs leading-relaxed text-paper/60">
@@ -246,6 +315,8 @@ export function HeroEstimator() {
           )}
         </div>
       )}
+        </div>
+      </div>
 
       <p
         className={`mt-3 text-xs ${error ? "text-ember" : "text-ink-soft"}`}
