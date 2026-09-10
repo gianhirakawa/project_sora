@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 260" width="640" height="260" role="img" preserveAspectRatio="xMidYMid slice"><title>Hybrid: panels plus a battery for brownout backup</title>
+<defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#081426"/><stop offset="34%" stop-color="#2b3a52"/>
+    <stop offset="60%" stop-color="#8a5a3c"/><stop offset="78%" stop-color="#f4801f"/>
+    <stop offset="100%" stop-color="#ffb703"/>
+  </linearGradient>
+  <linearGradient id="skyMorning" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#9fb4c4"/><stop offset="42%" stop-color="#e7d6bd"/>
+    <stop offset="74%" stop-color="#ffd79a"/><stop offset="100%" stop-color="#ffb703"/>
+  </linearGradient>
+  <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#fff3c4"/><stop offset="45%" stop-color="#ffb703" stop-opacity="0.75"/>
+    <stop offset="100%" stop-color="#ffb703" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="panelGrad" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#16324f"/><stop offset="45%" stop-color="#0c1f33"/>
+    <stop offset="72%" stop-color="#274a6b"/><stop offset="100%" stop-color="#0c1f33"/>
+  </linearGradient>
+  <linearGradient id="panelWarm" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#3b5a76"/><stop offset="40%" stop-color="#12283f"/>
+    <stop offset="70%" stop-color="#e39b00" stop-opacity="0.34"/><stop offset="100%" stop-color="#0c1f33"/>
+  </linearGradient>
+  <linearGradient id="roofFace" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#3a4c63"/><stop offset="100%" stop-color="#1a2c42"/></linearGradient>
+  <linearGradient id="wallFace" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#f7efe0"/><stop offset="100%" stop-color="#dcc9a8"/></linearGradient>
+  <linearGradient id="wallShade" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#c2ab8a"/><stop offset="100%" stop-color="#9d8567"/></linearGradient>
+  <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/>
+    <feColorMatrix type="saturate" values="0"/></filter>
+</defs>
+
+<rect width="640" height="260" fill="url(#skyMorning)"/>
+<circle cx="540" cy="60" r="150" fill="url(#sunGlow)"/>
+<rect y="196" width="640" height="64" fill="#7c9a72"/>
+
+<g>
+  <polygon points="60,150 240,118 320,168 140,206" fill="url(#roofFace)"/>
+  <polygon points="81.1,150.3 114.9,144.5 183.5,186.3 151.0,193.0" fill="url(#panelWarm)" stroke="#081426" stroke-width="1.4" stroke-linejoin="round"/>
+<line x1="104.4" y1="164.5" x2="137.7" y2="158.4" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<line x1="127.7" y1="178.7" x2="160.6" y2="172.4" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<polygon points="119.1,143.7 152.8,138.0 220.0,178.8 187.6,185.5" fill="url(#panelWarm)" stroke="#081426" stroke-width="1.4" stroke-linejoin="round"/>
+<line x1="141.9" y1="157.7" x2="175.2" y2="151.6" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<line x1="164.7" y1="171.6" x2="197.6" y2="165.2" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<polygon points="157.1,137.2 190.8,131.4 256.5,171.3 224.1,178.0" fill="url(#panelWarm)" stroke="#081426" stroke-width="1.4" stroke-linejoin="round"/>
+<line x1="179.4" y1="150.8" x2="212.7" y2="144.7" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<line x1="201.8" y1="164.4" x2="234.6" y2="158.0" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<polygon points="195.1,130.7 228.8,124.9 293.0,163.9 260.6,170.5" fill="url(#panelWarm)" stroke="#081426" stroke-width="1.4" stroke-linejoin="round"/>
+<line x1="216.9" y1="144.0" x2="250.2" y2="137.9" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<line x1="238.8" y1="157.2" x2="271.6" y2="150.9" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+  <polygon points="140,206 320,168 320,196 140,240" fill="url(#wallFace)"/>
+  <polygon points="60,150 140,206 140,240 60,196" fill="url(#wallShade)"/>
+</g>
+<g><rect x="420" y="112" width="90" height="128" rx="10" fill="#123047" stroke="#0c1f33" stroke-width="4"/>
+<rect x="436" y="130" width="58" height="12" rx="6" fill="#1f6f5c"/>
+<rect x="436" y="150" width="58" height="12" rx="6" fill="#1f6f5c"/>
+<rect x="436" y="170" width="58" height="12" rx="6" fill="#ffb703"/>
+<path d="M470,196 l-16,26 h13 l-7,22 20,-30 h-13 z" fill="#ffb703"/>
+<circle cx="465" cy="96" r="34" fill="#ffb703" opacity="0.25"/></g>
+<path d="M330,168 Q378,150 414,150" stroke="#ffb703" stroke-width="7" stroke-dasharray="16 12" fill="none" stroke-linecap="round"/>
+<rect width="640" height="260" filter="url(#grain)" opacity="0.05" style="mix-blend-mode:multiply"/>
+</svg>

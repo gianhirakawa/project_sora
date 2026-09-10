@@ -32,6 +32,7 @@
   --color-line: #e5dcc8;
 
   --shadow-lift: 0 12px 32px -12px rgb(12 31 51 / 0.18);
+  --shadow-float: 0 20px 40px -16px rgb(12 31 51 / 0.28);
 
   --animate-fade-up: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 
@@ -88,6 +89,41 @@ body {
 /* Tabular numerals for stats, prices, and calculator results. */
 @utility tnum {
   font-variant-numeric: tabular-nums;
+}
+
+/*
+ * Scroll-reveal (v2 homepage). Elements opt in with `.sr`; the ScrollReveal
+ * client component (src/components/reveal.tsx) adds `.is-in` when they enter
+ * the viewport. `.sr-d1`…`.sr-d3` stagger a grid. The reduced-motion rule
+ * below (and the JS guard) reveal everything immediately.
+ */
+.sr {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
+  transition-delay: var(--sr-delay, 0s);
+}
+.sr.is-in {
+  opacity: 1;
+  transform: none;
+}
+.sr-d1 {
+  --sr-delay: 0.06s;
+}
+.sr-d2 {
+  --sr-delay: 0.14s;
+}
+.sr-d3 {
+  --sr-delay: 0.22s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sr {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 
 /*

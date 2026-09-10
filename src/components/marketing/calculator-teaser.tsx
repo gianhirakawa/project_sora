@@ -1,70 +1,82 @@
-import { ReceiptText } from "lucide-react";
 import { Button } from "../ui/button";
 import { Section } from "../ui/section";
 import { SectionHeading } from "../ui/section-heading";
-import { Card } from "../ui/card";
 
-const steps = [
-  "Enter your recent electric bill amount",
-  "Tell us your city, roof, and backup goals",
-  "Get an indicative system size, savings, and payback range",
+/**
+ * Bill-first calculator teaser (v2): numbered steps + dual CTA on the left,
+ * device mockup with a soft sun glow on the right.
+ *
+ * Plain <img> for the SVG (static, versioned asset — see hero.tsx note).
+ */
+const steps: ReadonlyArray<{ title: string; detail: string }> = [
+  {
+    title: "Enter your recent electric bill amount",
+    detail: "the number at the bottom of the bill is enough.",
+  },
+  {
+    title: "Tell us your city, roof, and backup goals",
+    detail: "three taps, no account.",
+  },
+  {
+    title: "Get an indicative size, savings, and payback range",
+    detail: "with the assumptions shown.",
+  },
 ];
 
 export function CalculatorTeaser() {
   return (
     <Section id="calculator" labelledBy="calculator-heading">
-      <div className="grid items-center gap-8 lg:grid-cols-2">
-        <div>
+      <div className="grid items-center gap-10 lg:grid-cols-2">
+        <div className="sr">
           <SectionHeading
             id="calculator-heading"
             title={"Start with your electric bill. That's it."}
             intro="No technical knowledge needed. Our bill-first calculator turns your average monthly bill into an indicative solar system size, monthly savings range, and payback range."
           />
-          <ul className="mt-5 space-y-2">
-            {steps.map((step) => (
-              <li key={step} className="flex items-start gap-2.5 text-sm">
+          <ol className="mt-6 space-y-3">
+            {steps.map((step, i) => (
+              <li key={step.title} className="flex items-start gap-3 text-sm">
                 <span
                   aria-hidden="true"
-                  className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-sun text-[11px] font-bold text-ink"
+                  className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-sun font-display text-xs font-extrabold text-ink"
                 >
-                  ✓
+                  {i + 1}
                 </span>
-                <span>{step}</span>
+                <span className="pt-1">
+                  <strong className="font-display">{step.title}</strong> —{" "}
+                  {step.detail}
+                </span>
               </li>
             ))}
-          </ul>
-        </div>
-
-        <Card className="relative overflow-hidden">
-          <div
-            aria-hidden="true"
-            className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-sun/30 blur-xl"
-          />
-          <div className="relative flex flex-col gap-4">
-            <div className="flex items-center gap-3">
-              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-sand">
-                <ReceiptText className="h-6 w-6 text-ink" aria-hidden="true" />
-              </span>
-              <div>
-                <p className="font-display font-bold">Savings Calculator</p>
-                <p className="text-xs text-ink-soft">
-                  Indicative estimate — takes about 2 minutes
-                </p>
-              </div>
-            </div>
-            <div className="rounded-xl border border-dashed border-line bg-paper px-4 py-3 text-sm text-ink-soft">
-              Avg. monthly electric bill&nbsp;
-              <span className="font-display text-lg font-bold text-ink">₱</span>
-              <span className="tracking-widest text-ink-soft/50">______</span>
-            </div>
-            <Button href="/calculate" size="lg" className="w-full">
+          </ol>
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+            <Button href="/calculate" size="lg">
               Calculate My Savings
             </Button>
-            <p className="text-center text-xs text-ink-soft">
-              Results are indicative, not a final engineering quotation.
-            </p>
+            <Button href="/book-site-survey" size="lg" variant="secondary">
+              Skip to a free site survey
+            </Button>
           </div>
-        </Card>
+          <p className="mt-4 text-xs text-ink-soft">
+            Results are indicative, not a final engineering quotation.
+          </p>
+        </div>
+
+        <div className="sr sr-d2 relative">
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 -z-10 mx-auto my-auto h-3/4 w-3/4 rounded-full bg-sun/25 blur-3xl"
+          />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/calculator-device.svg"
+            width={760}
+            height={860}
+            alt="A phone showing the Sora savings calculator with an indicative 6 kW system, beside a paper electric bill"
+            className="mx-auto w-full max-w-[440px]"
+            loading="lazy"
+          />
+        </div>
       </div>
     </Section>
   );

@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700" width="900" height="700" role="img" preserveAspectRatio="xMidYMid slice"><title>Sora installation crew fitting a panel on a roof</title>
+<defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#081426"/><stop offset="34%" stop-color="#2b3a52"/>
+    <stop offset="60%" stop-color="#8a5a3c"/><stop offset="78%" stop-color="#f4801f"/>
+    <stop offset="100%" stop-color="#ffb703"/>
+  </linearGradient>
+  <linearGradient id="skyMorning" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#9fb4c4"/><stop offset="42%" stop-color="#e7d6bd"/>
+    <stop offset="74%" stop-color="#ffd79a"/><stop offset="100%" stop-color="#ffb703"/>
+  </linearGradient>
+  <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#fff3c4"/><stop offset="45%" stop-color="#ffb703" stop-opacity="0.75"/>
+    <stop offset="100%" stop-color="#ffb703" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="panelGrad" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#16324f"/><stop offset="45%" stop-color="#0c1f33"/>
+    <stop offset="72%" stop-color="#274a6b"/><stop offset="100%" stop-color="#0c1f33"/>
+  </linearGradient>
+  <linearGradient id="panelWarm" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#3b5a76"/><stop offset="40%" stop-color="#12283f"/>
+    <stop offset="70%" stop-color="#e39b00" stop-opacity="0.34"/><stop offset="100%" stop-color="#0c1f33"/>
+  </linearGradient>
+  <linearGradient id="roofFace" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#3a4c63"/><stop offset="100%" stop-color="#1a2c42"/></linearGradient>
+  <linearGradient id="wallFace" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#f7efe0"/><stop offset="100%" stop-color="#dcc9a8"/></linearGradient>
+  <linearGradient id="wallShade" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#c2ab8a"/><stop offset="100%" stop-color="#9d8567"/></linearGradient>
+  <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/>
+    <feColorMatrix type="saturate" values="0"/></filter>
+</defs>
+
+<rect width="900" height="700" fill="url(#skyMorning)"/>
+<circle cx="730" cy="140" r="306" fill="url(#sunGlow)"/>
+<circle cx="730" cy="140" r="50" fill="#fff6d0" opacity="0.95"/>
+<ellipse cx="162" cy="196" rx="90.0" ry="16" fill="#fff0d2" opacity="0.35"/>
+<ellipse cx="468" cy="150" rx="117.0" ry="13" fill="#fff0d2" opacity="0.35"/>
+<ellipse cx="720" cy="222" rx="76.5" ry="11" fill="#fff0d2" opacity="0.35"/>
+<path d="M0,330 L200,296 L430,334 L660,290 L900,332 L900,700 L0,700Z" fill="#5b7f6a" opacity="0.35"/>
+<!-- roof plane, lit by the morning sun -->
+<polygon points="-40,470 940,352 940,700 -40,700" fill="url(#roofFace)"/>
+<polygon points="-40,470 940,352 940,378 -40,496" fill="#5a708b"/>
+<polygon points="-40,470 940,352 940,700 -40,700" fill="#e39b00" opacity="0.10"/>
+<polygon points="47.0,557.5 193.6,539.8 206.1,617.0 56.6,636.7" fill="url(#panelWarm)" stroke="#081426" stroke-width="1.4" stroke-linejoin="round"/>
+<line x1="50.2" y1="583.9" x2="197.8" y2="565.5" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<line x1="53.4" y1="610.3" x2="202.0" y2="591.2" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<polygon points="207.1,538.1 353.7,520.4 369.3,595.4 219.8,615.1" fill="url(#panelWarm)" stroke="#081426" stroke-width="1.4" stroke-linejoin="round"/>
+<line x1="211.3" y1="563.8" x2="358.9" y2="545.4" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<line x1="215.6" y1="589.5" x2="364.1" y2="570.4" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<polygon points="367.2,518.7 513.8,501.0 532.6,573.8 383.1,593.5" fill="url(#panelWarm)" stroke="#081426" stroke-width="1.4" stroke-linejoin="round"/>
+<line x1="372.5" y1="543.7" x2="520.1" y2="525.2" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<line x1="377.8" y1="568.6" x2="526.3" y2="549.5" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<polygon points="57.1,641.4 206.8,621.5 219.3,698.7 66.7,720.6" fill="url(#panelWarm)" stroke="#081426" stroke-width="1.4" stroke-linejoin="round"/>
+<line x1="60.3" y1="667.8" x2="211.0" y2="647.3" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<line x1="63.5" y1="694.2" x2="215.1" y2="673.0" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<polygon points="220.6,619.7 370.3,599.8 385.9,674.8 233.3,696.7" fill="url(#panelWarm)" stroke="#081426" stroke-width="1.4" stroke-linejoin="round"/>
+<line x1="224.8" y1="645.4" x2="375.5" y2="624.8" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<line x1="229.0" y1="671.0" x2="380.7" y2="649.8" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<polygon points="384.0,598.0 533.7,578.1 552.4,650.8 399.9,672.8" fill="url(#panelWarm)" stroke="#081426" stroke-width="1.4" stroke-linejoin="round"/>
+<line x1="389.3" y1="622.9" x2="539.9" y2="602.3" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<line x1="394.6" y1="647.8" x2="546.2" y2="626.6" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<!-- panel being fitted -->
+<polygon points="352,404 620,372 634,424 366,458" fill="url(#panelGrad)" stroke="#0c1f33" stroke-width="5"/>
+<line x1="360" y1="432" x2="628" y2="399" stroke="#0c1f33" stroke-width="2.5" opacity="0.45"/>
+<g transform="translate(320,596) scale(1.45,1.45)">
+  <circle cx="0" cy="-96" r="26" fill="#c98a5b"/>
+  <path d="M-30,-108 a30,26 0 0 1 60,0 l6,6 -72,0 z" fill="#f4801f"/>
+  <path d="M-26,-66 q26,-14 52,0 l10,72 -72,0 z" fill="#ffb703"/>
+  <rect x="-24" y="6" width="20" height="62" rx="8" fill="#0c1f33"/>
+  <rect x="6" y="6" width="20" height="62" rx="8" fill="#0c1f33"/>
+  <path d="M22,-58 q34,16 54,-8" stroke="#ffb703" stroke-width="17" fill="none" stroke-linecap="round"/>
+  <path d="M-22,-58 q-30,20 -46,44" stroke="#ffb703" stroke-width="17" fill="none" stroke-linecap="round"/>
+</g>
+<g transform="translate(650,556) scale(-1.38,1.38)">
+  <circle cx="0" cy="-96" r="26" fill="#c98a5b"/>
+  <path d="M-30,-108 a30,26 0 0 1 60,0 l6,6 -72,0 z" fill="#f4801f"/>
+  <path d="M-26,-66 q26,-14 52,0 l10,72 -72,0 z" fill="#f4801f"/>
+  <rect x="-24" y="6" width="20" height="62" rx="8" fill="#0c1f33"/>
+  <rect x="6" y="6" width="20" height="62" rx="8" fill="#0c1f33"/>
+  <path d="M22,-58 q34,16 54,-8" stroke="#f4801f" stroke-width="17" fill="none" stroke-linecap="round"/>
+  <path d="M-22,-58 q-30,20 -46,44" stroke="#f4801f" stroke-width="17" fill="none" stroke-linecap="round"/>
+</g>
+<g><rect x="760" y="592" width="104" height="64" rx="10" fill="#1f6f5c"/>
+<rect x="794" y="574" width="36" height="18" rx="7" fill="#0c1f33"/>
+<rect x="778" y="612" width="68" height="8" rx="4" fill="#faf6ee" opacity="0.5"/></g>
+
+<rect width="900" height="700" filter="url(#grain)" opacity="0.05" style="mix-blend-mode:multiply"/>
+</svg>

@@ -1,4 +1,3 @@
-import { Calculator, ClipboardCheck } from "lucide-react";
 import { Section } from "../ui/section";
 import { Button } from "../ui/button";
 
@@ -7,9 +6,10 @@ export function FinalCta() {
     <Section
       labelledBy="final-cta-heading"
       tone="dark"
+      className="grain"
       containerClassName="flex flex-col items-center text-center"
     >
-      <div className="max-w-2xl">
+      <div className="sr max-w-2xl">
         <h2
           id="final-cta-heading"
           className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl"
@@ -21,9 +21,8 @@ export function FinalCta() {
           Two minutes for an indicative estimate, or skip straight to the free
           site survey — either way, no commitment and no login.
         </p>
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
           <Button href="/calculate" size="lg">
-            <Calculator className="h-5 w-5" aria-hidden="true" />
             Calculate My Savings
           </Button>
           <Button
@@ -32,7 +31,6 @@ export function FinalCta() {
             variant="secondary"
             className="border-paper/40 text-paper hover:bg-paper hover:text-ink"
           >
-            <ClipboardCheck className="h-5 w-5" aria-hidden="true" />
             Book a Free Site Survey
           </Button>
         </div>

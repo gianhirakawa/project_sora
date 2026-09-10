@@ -14,6 +14,7 @@ export function Packages() {
     <Section id="packages" labelledBy="packages-heading">
       <SectionHeading
         id="packages-heading"
+        className="sr"
         title="Package examples to start the conversation"
         intro={
           <>
@@ -29,12 +30,16 @@ export function Packages() {
         }
       />
 
-      <div className="mt-10 grid gap-5 lg:grid-cols-3">
-        {PACKAGE_OPTIONS.map((option) => (
-          <PackageCard key={option.name} option={option} />
+      <div className="mt-10 grid items-start gap-5 lg:grid-cols-3">
+        {PACKAGE_OPTIONS.map((option, i) => (
+          <PackageCard
+            key={option.name}
+            option={option}
+            className={i > 0 ? `sr sr-d${i}` : "sr"}
+          />
         ))}
       </div>
-      <p className="mt-5 text-xs text-ink-soft">
+      <p className="mt-6 text-xs text-ink-soft">
         Prices are illustrative starting points in Philippine pesos and are
         not quotations. Final pricing depends on the site survey.
       </p>

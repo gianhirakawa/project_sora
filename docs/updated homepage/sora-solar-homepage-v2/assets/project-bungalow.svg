@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" width="900" height="620" role="img" preserveAspectRatio="xMidYMid slice"><title>Bungalow with a 5 kW grid-tied rooftop array</title>
+<defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#081426"/><stop offset="34%" stop-color="#2b3a52"/>
+    <stop offset="60%" stop-color="#8a5a3c"/><stop offset="78%" stop-color="#f4801f"/>
+    <stop offset="100%" stop-color="#ffb703"/>
+  </linearGradient>
+  <linearGradient id="skyMorning" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#9fb4c4"/><stop offset="42%" stop-color="#e7d6bd"/>
+    <stop offset="74%" stop-color="#ffd79a"/><stop offset="100%" stop-color="#ffb703"/>
+  </linearGradient>
+  <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#fff3c4"/><stop offset="45%" stop-color="#ffb703" stop-opacity="0.75"/>
+    <stop offset="100%" stop-color="#ffb703" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="panelGrad" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#16324f"/><stop offset="45%" stop-color="#0c1f33"/>
+    <stop offset="72%" stop-color="#274a6b"/><stop offset="100%" stop-color="#0c1f33"/>
+  </linearGradient>
+  <linearGradient id="panelWarm" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#3b5a76"/><stop offset="40%" stop-color="#12283f"/>
+    <stop offset="70%" stop-color="#e39b00" stop-opacity="0.34"/><stop offset="100%" stop-color="#0c1f33"/>
+  </linearGradient>
+  <linearGradient id="roofFace" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#3a4c63"/><stop offset="100%" stop-color="#1a2c42"/></linearGradient>
+  <linearGradient id="wallFace" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#f7efe0"/><stop offset="100%" stop-color="#dcc9a8"/></linearGradient>
+  <linearGradient id="wallShade" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#c2ab8a"/><stop offset="100%" stop-color="#9d8567"/></linearGradient>
+  <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/>
+    <feColorMatrix type="saturate" values="0"/></filter>
+</defs>
+
+<rect width="900" height="620" fill="url(#skyMorning)"/>
+<circle cx="720" cy="180" r="306" fill="url(#sunGlow)"/>
+<circle cx="720" cy="180" r="50" fill="#fff6d0" opacity="0.95"/>
+<ellipse cx="162" cy="174" rx="90.0" ry="16" fill="#fff0d2" opacity="0.35"/>
+<ellipse cx="468" cy="128" rx="117.0" ry="13" fill="#fff0d2" opacity="0.35"/>
+<ellipse cx="720" cy="200" rx="76.5" ry="11" fill="#fff0d2" opacity="0.35"/>
+<path d="M0,430 L150,392 L330,424 L520,386 L720,428 L900,398 L900,620 L0,620Z" fill="#5b7f6a" opacity="0.5"/>
+<rect y="470" width="900" height="150" fill="#7c9a72"/>
+<path d="M80,520 Q70,455 80,401" stroke="#1f4a3c" stroke-width="7.7" fill="none" stroke-linecap="round" opacity="0.8"/>
+<path d="M80,401 Q51,376 22,376" stroke="#1f4a3c" stroke-width="6.3" fill="none" stroke-linecap="round" opacity="0.8"/>
+<path d="M80,401 Q66,369 52,356" stroke="#1f4a3c" stroke-width="6.3" fill="none" stroke-linecap="round" opacity="0.8"/>
+<path d="M80,401 Q94,369 108,356" stroke="#1f4a3c" stroke-width="6.3" fill="none" stroke-linecap="round" opacity="0.8"/>
+<path d="M80,401 Q109,376 138,376" stroke="#1f4a3c" stroke-width="6.3" fill="none" stroke-linecap="round" opacity="0.8"/>
+<path d="M80,401 Q113,383 146,394" stroke="#1f4a3c" stroke-width="6.3" fill="none" stroke-linecap="round" opacity="0.8"/>
+<path d="M80,401 Q47,383 14,394" stroke="#1f4a3c" stroke-width="6.3" fill="none" stroke-linecap="round" opacity="0.8"/><path d="M842,540 Q833,482 842,435" stroke="#1f4a3c" stroke-width="6.8" fill="none" stroke-linecap="round" opacity="0.7"/>
+<path d="M842,435 Q816,413 791,413" stroke="#1f4a3c" stroke-width="5.6" fill="none" stroke-linecap="round" opacity="0.7"/>
+<path d="M842,435 Q830,406 817,395" stroke="#1f4a3c" stroke-width="5.6" fill="none" stroke-linecap="round" opacity="0.7"/>
+<path d="M842,435 Q854,406 867,395" stroke="#1f4a3c" stroke-width="5.6" fill="none" stroke-linecap="round" opacity="0.7"/>
+<path d="M842,435 Q868,413 893,413" stroke="#1f4a3c" stroke-width="5.6" fill="none" stroke-linecap="round" opacity="0.7"/>
+<path d="M842,435 Q871,419 900,428" stroke="#1f4a3c" stroke-width="5.6" fill="none" stroke-linecap="round" opacity="0.7"/>
+<path d="M842,435 Q813,419 784,428" stroke="#1f4a3c" stroke-width="5.6" fill="none" stroke-linecap="round" opacity="0.7"/>
+<g>
+  <polygon points="180,392 620,320 790,430 330,520" fill="url(#roofFace)"/>
+  <polygon points="219.4,394.6 286.2,383.9 353.3,432.7 285.6,444.6" fill="url(#panelGrad)" stroke="#081426" stroke-width="1.4" stroke-linejoin="round"/>
+<line x1="241.4" y1="411.3" x2="308.5" y2="400.2" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<line x1="263.5" y1="427.9" x2="330.9" y2="416.5" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<polygon points="297.0,382.2 363.8,371.5 432.1,419.0 364.3,430.8" fill="url(#panelGrad)" stroke="#081426" stroke-width="1.4" stroke-linejoin="round"/>
+<line x1="319.5" y1="398.4" x2="386.5" y2="387.3" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<line x1="341.9" y1="414.6" x2="409.3" y2="403.1" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<polygon points="374.7,369.7 441.4,359.0 510.8,405.2 443.1,417.0" fill="url(#panelGrad)" stroke="#081426" stroke-width="1.4" stroke-linejoin="round"/>
+<line x1="397.5" y1="385.5" x2="464.6" y2="374.4" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<line x1="420.3" y1="401.3" x2="487.7" y2="389.8" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<polygon points="452.3,357.3 519.1,346.6 589.6,391.4 521.9,403.3" fill="url(#panelGrad)" stroke="#081426" stroke-width="1.4" stroke-linejoin="round"/>
+<line x1="475.5" y1="372.6" x2="542.6" y2="361.5" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<line x1="498.7" y1="387.9" x2="566.1" y2="376.5" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<polygon points="529.9,344.9 596.7,334.2 668.4,377.7 600.6,389.5" fill="url(#panelGrad)" stroke="#081426" stroke-width="1.4" stroke-linejoin="round"/>
+<line x1="553.5" y1="359.7" x2="620.6" y2="348.7" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<line x1="577.1" y1="374.6" x2="644.5" y2="363.2" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<polygon points="289.5,447.5 357.3,435.6 424.4,484.4 355.6,497.5" fill="url(#panelGrad)" stroke="#081426" stroke-width="1.4" stroke-linejoin="round"/>
+<line x1="311.5" y1="464.2" x2="379.7" y2="451.9" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<line x1="333.6" y1="480.8" x2="402.0" y2="468.1" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<polygon points="368.3,433.7 436.1,421.8 504.4,469.3 435.6,482.3" fill="url(#panelGrad)" stroke="#081426" stroke-width="1.4" stroke-linejoin="round"/>
+<line x1="390.7" y1="449.9" x2="458.9" y2="437.6" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<line x1="413.2" y1="466.1" x2="481.6" y2="453.4" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<polygon points="447.1,419.8 514.9,407.9 584.3,454.1 515.6,467.1" fill="url(#panelGrad)" stroke="#081426" stroke-width="1.4" stroke-linejoin="round"/>
+<line x1="470.0" y1="435.6" x2="538.1" y2="423.3" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<line x1="492.8" y1="451.4" x2="561.2" y2="438.7" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<polygon points="526.0,406.0 593.8,394.1 664.3,438.9 595.5,452.0" fill="url(#panelGrad)" stroke="#081426" stroke-width="1.4" stroke-linejoin="round"/>
+<line x1="549.2" y1="421.3" x2="617.3" y2="409.0" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<line x1="572.4" y1="436.6" x2="640.8" y2="424.0" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<polygon points="604.8,392.2 672.6,380.3 744.3,423.8 675.5,436.8" fill="url(#panelGrad)" stroke="#081426" stroke-width="1.4" stroke-linejoin="round"/>
+<line x1="628.4" y1="407.0" x2="696.5" y2="394.8" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<line x1="651.9" y1="421.9" x2="720.4" y2="409.3" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+  <polygon points="180,392 330,520 330,540 180,412" fill="#20344b"/>
+  <polygon points="330,520 790,430 790,450 330,540" fill="#16273b"/>
+  <polygon points="330,540 790,450 790,560 330,620" fill="url(#wallFace)"/>
+  <polygon points="180,412 330,540 330,620 180,620" fill="url(#wallShade)"/>
+  <polygon points="400,556 470,542 470,596 400,612" fill="#ffb703" opacity="0.85"/>
+  <polygon points="530,530 600,516 600,570 530,586" fill="#ffb703" opacity="0.7"/>
+  <polygon points="660,504 730,490 730,560 660,576" fill="#2c3f57"/>
+</g>
+<ellipse cx="500" cy="612" rx="330" ry="18" fill="#0c1f33" opacity="0.12"/>
+
+<rect width="900" height="620" filter="url(#grain)" opacity="0.05" style="mix-blend-mode:multiply"/>
+</svg>

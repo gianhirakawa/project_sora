@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 260" width="640" height="260" role="img" preserveAspectRatio="xMidYMid slice"><title>Off-grid: a self-contained solar, battery and inverter system</title>
+<defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#081426"/><stop offset="34%" stop-color="#2b3a52"/>
+    <stop offset="60%" stop-color="#8a5a3c"/><stop offset="78%" stop-color="#f4801f"/>
+    <stop offset="100%" stop-color="#ffb703"/>
+  </linearGradient>
+  <linearGradient id="skyMorning" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#9fb4c4"/><stop offset="42%" stop-color="#e7d6bd"/>
+    <stop offset="74%" stop-color="#ffd79a"/><stop offset="100%" stop-color="#ffb703"/>
+  </linearGradient>
+  <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#fff3c4"/><stop offset="45%" stop-color="#ffb703" stop-opacity="0.75"/>
+    <stop offset="100%" stop-color="#ffb703" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="panelGrad" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#16324f"/><stop offset="45%" stop-color="#0c1f33"/>
+    <stop offset="72%" stop-color="#274a6b"/><stop offset="100%" stop-color="#0c1f33"/>
+  </linearGradient>
+  <linearGradient id="panelWarm" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#3b5a76"/><stop offset="40%" stop-color="#12283f"/>
+    <stop offset="70%" stop-color="#e39b00" stop-opacity="0.34"/><stop offset="100%" stop-color="#0c1f33"/>
+  </linearGradient>
+  <linearGradient id="roofFace" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#3a4c63"/><stop offset="100%" stop-color="#1a2c42"/></linearGradient>
+  <linearGradient id="wallFace" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#f7efe0"/><stop offset="100%" stop-color="#dcc9a8"/></linearGradient>
+  <linearGradient id="wallShade" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#c2ab8a"/><stop offset="100%" stop-color="#9d8567"/></linearGradient>
+  <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/>
+    <feColorMatrix type="saturate" values="0"/></filter>
+</defs>
+
+<rect width="640" height="260" fill="url(#skyMorning)"/>
+<circle cx="540" cy="60" r="150" fill="url(#sunGlow)"/>
+<rect y="196" width="640" height="64" fill="#7c9a72"/>
+
+<g>
+  <polygon points="70,158 230,128 300,172 140,210" fill="url(#roofFace)"/>
+  <polygon points="88.8,158.2 119.0,152.4 178.3,191.9 149.0,199.0" fill="url(#panelGrad)" stroke="#081426" stroke-width="1.4" stroke-linejoin="round"/>
+<line x1="108.8" y1="171.8" x2="138.7" y2="165.6" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<line x1="128.9" y1="185.4" x2="158.5" y2="178.7" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<polygon points="122.8,151.7 152.9,145.9 211.3,183.9 182.0,191.0" fill="url(#panelGrad)" stroke="#081426" stroke-width="1.4" stroke-linejoin="round"/>
+<line x1="142.5" y1="164.8" x2="172.4" y2="158.6" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<line x1="162.2" y1="177.9" x2="191.9" y2="171.2" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<polygon points="156.7,145.2 186.9,139.4 244.3,175.9 215.0,183.0" fill="url(#panelGrad)" stroke="#081426" stroke-width="1.4" stroke-linejoin="round"/>
+<line x1="176.2" y1="157.8" x2="206.1" y2="151.6" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<line x1="195.6" y1="170.4" x2="225.2" y2="163.7" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<polygon points="190.7,138.7 220.9,132.9 277.3,167.9 248.0,175.0" fill="url(#panelGrad)" stroke="#081426" stroke-width="1.4" stroke-linejoin="round"/>
+<line x1="209.8" y1="150.8" x2="239.7" y2="144.6" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<line x1="228.9" y1="162.9" x2="258.5" y2="156.3" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+  <polygon points="140,210 300,172 300,198 140,240" fill="url(#wallFace)"/>
+  <polygon points="70,158 140,210 140,240 70,198" fill="url(#wallShade)"/>
+</g>
+<g transform="translate(360,0)">
+  <polygon points="20,110 150,86 200,126 70,156" fill="url(#roofFace)"/>
+  <polygon points="36.1,110.2 69.1,104.1 111.2,137.8 78.9,145.2" fill="url(#panelGrad)" stroke="#081426" stroke-width="1.4" stroke-linejoin="round"/>
+<line x1="50.4" y1="121.9" x2="83.1" y2="115.3" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<line x1="64.6" y1="133.5" x2="97.2" y2="126.6" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<polygon points="72.1,103.5 105.1,97.4 146.6,129.9 114.2,137.2" fill="url(#panelGrad)" stroke="#081426" stroke-width="1.4" stroke-linejoin="round"/>
+<line x1="86.1" y1="114.8" x2="118.9" y2="108.2" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<line x1="100.2" y1="126.0" x2="132.8" y2="119.1" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<polygon points="108.1,96.9 141.1,90.7 181.9,121.9 149.6,129.2" fill="url(#panelGrad)" stroke="#081426" stroke-width="1.4" stroke-linejoin="round"/>
+<line x1="121.9" y1="107.6" x2="154.7" y2="101.1" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<line x1="135.7" y1="118.4" x2="168.3" y2="111.5" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+  <rect x="40" y="156" width="120" height="84" rx="8" fill="#123047" stroke="#0c1f33" stroke-width="4"/>
+  <rect x="58" y="176" width="84" height="12" rx="6" fill="#1f6f5c"/>
+  <rect x="58" y="198" width="84" height="12" rx="6" fill="#ffb703"/>
+</g>
+<g stroke="#0c1f33" stroke-width="6" stroke-linecap="round" opacity="0.35">
+  <path d="M330,120 L360,90"/><path d="M330,90 L360,120"/></g>
+<circle cx="345" cy="105" r="26" fill="none" stroke="#0c1f33" stroke-width="5" opacity="0.35"/>
+<rect width="640" height="260" filter="url(#grain)" opacity="0.05" style="mix-blend-mode:multiply"/>
+</svg>

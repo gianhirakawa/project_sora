@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 860" width="760" height="860" role="img" preserveAspectRatio="xMidYMid slice"><title>Phone showing the Sora bill-first savings calculator next to an electric bill</title>
+<defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#081426"/><stop offset="34%" stop-color="#2b3a52"/>
+    <stop offset="60%" stop-color="#8a5a3c"/><stop offset="78%" stop-color="#f4801f"/>
+    <stop offset="100%" stop-color="#ffb703"/>
+  </linearGradient>
+  <linearGradient id="skyMorning" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#9fb4c4"/><stop offset="42%" stop-color="#e7d6bd"/>
+    <stop offset="74%" stop-color="#ffd79a"/><stop offset="100%" stop-color="#ffb703"/>
+  </linearGradient>
+  <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#fff3c4"/><stop offset="45%" stop-color="#ffb703" stop-opacity="0.75"/>
+    <stop offset="100%" stop-color="#ffb703" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="panelGrad" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#16324f"/><stop offset="45%" stop-color="#0c1f33"/>
+    <stop offset="72%" stop-color="#274a6b"/><stop offset="100%" stop-color="#0c1f33"/>
+  </linearGradient>
+  <linearGradient id="panelWarm" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#3b5a76"/><stop offset="40%" stop-color="#12283f"/>
+    <stop offset="70%" stop-color="#e39b00" stop-opacity="0.34"/><stop offset="100%" stop-color="#0c1f33"/>
+  </linearGradient>
+  <linearGradient id="roofFace" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#3a4c63"/><stop offset="100%" stop-color="#1a2c42"/></linearGradient>
+  <linearGradient id="wallFace" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#f7efe0"/><stop offset="100%" stop-color="#dcc9a8"/></linearGradient>
+  <linearGradient id="wallShade" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#c2ab8a"/><stop offset="100%" stop-color="#9d8567"/></linearGradient>
+  <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/>
+    <feColorMatrix type="saturate" values="0"/></filter>
+</defs>
+
+<rect width="760" height="860" fill="none"/>
+<!-- paper electric bill behind -->
+<g transform="rotate(-8 300 430)">
+  <rect x="70" y="170" width="330" height="470" rx="12" fill="#ffffff" stroke="#e5dcc8" stroke-width="3"/>
+  <rect x="70" y="170" width="330" height="52" rx="12" fill="#f2ead9"/>
+  <text x="94" y="204" font-family="Sora, sans-serif" font-size="20" font-weight="700" fill="#0c1f33">ELECTRIC BILL</text>
+  <g fill="#e5dcc8">
+    <rect x="94" y="252" width="230" height="12" rx="6"/><rect x="94" y="284" width="180" height="12" rx="6"/>
+    <rect x="94" y="316" width="250" height="12" rx="6"/><rect x="94" y="392" width="140" height="12" rx="6"/>
+    <rect x="94" y="424" width="200" height="12" rx="6"/><rect x="94" y="456" width="160" height="12" rx="6"/>
+  </g>
+  <rect x="94" y="342" width="180" height="34" rx="8" fill="#ffb703" opacity="0.45"/>
+  <text x="104" y="368" font-family="Sora, sans-serif" font-size="22" font-weight="800" fill="#0c1f33">₱ 10,800</text>
+  <rect x="94" y="510" width="252" height="3" fill="#e5dcc8"/>
+  <g fill="#0c1f33" opacity="0.15"><rect x="94" y="536" width="120" height="66" rx="6"/></g>
+</g>
+<!-- phone -->
+<g>
+  <rect x="330" y="90" width="368" height="700" rx="46" fill="#0c1f33"/>
+  <rect x="344" y="104" width="340" height="672" rx="36" fill="#faf6ee"/>
+  <rect x="470" y="118" width="88" height="14" rx="7" fill="#0c1f33" opacity="0.8"/>
+  <!-- app header -->
+  <rect x="344" y="146" width="340" height="66" fill="#f2ead9"/>
+  <circle cx="382" cy="179" r="16" fill="#ffb703"/>
+  <text x="408" y="186" font-family="Sora, sans-serif" font-size="19" font-weight="700" fill="#0c1f33">Sora Solar</text>
+  <!-- input -->
+  <text x="376" y="256" font-family="Instrument Sans, sans-serif" font-size="16" fill="#41586f">Average monthly bill</text>
+  <rect x="376" y="270" width="276" height="60" rx="14" fill="#ffffff" stroke="#ffb703" stroke-width="3"/>
+  <text x="396" y="310" font-family="Sora, sans-serif" font-size="26" font-weight="800" fill="#0c1f33">₱ 10,800</text>
+  <!-- result card -->
+  <rect x="376" y="352" width="276" height="228" rx="18" fill="#0c1f33"/>
+  <rect x="376" y="352" width="276" height="4" rx="2" fill="#ffb703"/>
+  <text x="398" y="392" font-family="Instrument Sans, sans-serif" font-size="14" fill="#faf6ee" opacity="0.7">INDICATIVE SYSTEM</text>
+  <text x="398" y="436" font-family="Sora, sans-serif" font-size="38" font-weight="800" fill="#ffb703">6.0 kW</text>
+  <text x="398" y="472" font-family="Instrument Sans, sans-serif" font-size="15" fill="#faf6ee" opacity="0.8">13 panels</text>
+  <rect x="398" y="490" width="232" height="2" fill="#faf6ee" opacity="0.2"/>
+  <text x="398" y="524" font-family="Instrument Sans, sans-serif" font-size="14" fill="#faf6ee" opacity="0.7">EST. MONTHLY SAVINGS</text>
+  <text x="398" y="558" font-family="Sora, sans-serif" font-size="26" font-weight="800" fill="#faf6ee">₱6.0k – ₱8.1k</text>
+  <!-- bar chart -->
+  <g>
+    <rect x="376" y="606" width="52" height="96" rx="8" fill="#e5dcc8"/>
+    <rect x="440" y="640" width="52" height="62" rx="8" fill="#ffb703"/>
+    <rect x="504" y="654" width="52" height="48" rx="8" fill="#ffb703"/>
+    <rect x="568" y="668" width="52" height="34" rx="8" fill="#e39b00"/>
+  </g>
+  <text x="376" y="726" font-family="Instrument Sans, sans-serif" font-size="13" fill="#41586f">Bill before vs. after (indicative)</text>
+  <rect x="376" y="738" width="276" height="20" rx="10" fill="#ffb703" opacity="0.25"/>
+</g>
+
+
+</svg>

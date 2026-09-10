@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" width="900" height="620" role="img" preserveAspectRatio="xMidYMid slice"><title>Townhouse with a compact 3.5 kW array on the unshaded roof quadrant</title>
+<defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#081426"/><stop offset="34%" stop-color="#2b3a52"/>
+    <stop offset="60%" stop-color="#8a5a3c"/><stop offset="78%" stop-color="#f4801f"/>
+    <stop offset="100%" stop-color="#ffb703"/>
+  </linearGradient>
+  <linearGradient id="skyMorning" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#9fb4c4"/><stop offset="42%" stop-color="#e7d6bd"/>
+    <stop offset="74%" stop-color="#ffd79a"/><stop offset="100%" stop-color="#ffb703"/>
+  </linearGradient>
+  <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#fff3c4"/><stop offset="45%" stop-color="#ffb703" stop-opacity="0.75"/>
+    <stop offset="100%" stop-color="#ffb703" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="panelGrad" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#16324f"/><stop offset="45%" stop-color="#0c1f33"/>
+    <stop offset="72%" stop-color="#274a6b"/><stop offset="100%" stop-color="#0c1f33"/>
+  </linearGradient>
+  <linearGradient id="panelWarm" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#3b5a76"/><stop offset="40%" stop-color="#12283f"/>
+    <stop offset="70%" stop-color="#e39b00" stop-opacity="0.34"/><stop offset="100%" stop-color="#0c1f33"/>
+  </linearGradient>
+  <linearGradient id="roofFace" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#3a4c63"/><stop offset="100%" stop-color="#1a2c42"/></linearGradient>
+  <linearGradient id="wallFace" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#f7efe0"/><stop offset="100%" stop-color="#dcc9a8"/></linearGradient>
+  <linearGradient id="wallShade" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#c2ab8a"/><stop offset="100%" stop-color="#9d8567"/></linearGradient>
+  <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/>
+    <feColorMatrix type="saturate" values="0"/></filter>
+</defs>
+
+<rect width="900" height="620" fill="url(#skyMorning)"/>
+<circle cx="170" cy="150" r="306" fill="url(#sunGlow)"/>
+<circle cx="170" cy="150" r="50" fill="#fff6d0" opacity="0.95"/>
+<ellipse cx="162" cy="174" rx="90.0" ry="16" fill="#fff0d2" opacity="0.35"/>
+<ellipse cx="468" cy="128" rx="117.0" ry="13" fill="#fff0d2" opacity="0.35"/>
+<ellipse cx="720" cy="200" rx="76.5" ry="11" fill="#fff0d2" opacity="0.35"/>
+<path d="M0,440 L200,392 L420,438 L660,384 L900,436 L900,620 L0,620Z" fill="#4d7a68" opacity="0.55"/>
+<rect y="500" width="900" height="120" fill="#6f9370"/>
+<g>
+  <polygon points="140,300 560,240 820,322 392,398" fill="url(#roofFace)"/>
+  <polygon points="369.5,283.8 433.8,274.3 526.0,305.9 461.3,316.3" fill="url(#panelGrad)" stroke="#081426" stroke-width="1.4" stroke-linejoin="round"/>
+<line x1="400.1" y1="294.6" x2="464.6" y2="284.9" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<line x1="430.7" y1="305.5" x2="495.3" y2="295.4" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<polygon points="439.7,273.5 504.0,264.0 596.7,294.6 531.9,305.0" fill="url(#panelGrad)" stroke="#081426" stroke-width="1.4" stroke-linejoin="round"/>
+<line x1="470.5" y1="284.0" x2="534.9" y2="274.2" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<line x1="501.2" y1="294.5" x2="565.8" y2="284.4" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<polygon points="509.9,263.1 574.2,253.6 667.3,283.3 602.6,293.7" fill="url(#panelGrad)" stroke="#081426" stroke-width="1.4" stroke-linejoin="round"/>
+<line x1="540.8" y1="273.3" x2="605.2" y2="263.5" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<line x1="571.7" y1="283.5" x2="636.3" y2="273.4" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<polygon points="466.7,318.2 531.5,307.8 623.6,339.4 558.5,350.7" fill="url(#panelGrad)" stroke="#081426" stroke-width="1.4" stroke-linejoin="round"/>
+<line x1="497.3" y1="329.0" x2="562.2" y2="318.3" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<line x1="527.9" y1="339.9" x2="592.9" y2="328.9" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<polygon points="537.4,306.8 602.2,296.4 694.8,327.1 629.6,338.4" fill="url(#panelGrad)" stroke="#081426" stroke-width="1.4" stroke-linejoin="round"/>
+<line x1="568.1" y1="317.4" x2="633.0" y2="306.7" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<line x1="598.9" y1="327.9" x2="663.9" y2="316.9" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<polygon points="608.1,295.5 672.8,285.1 766.0,314.8 700.8,326.0" fill="url(#panelGrad)" stroke="#081426" stroke-width="1.4" stroke-linejoin="round"/>
+<line x1="639.0" y1="305.7" x2="703.9" y2="295.0" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+<line x1="669.9" y1="315.9" x2="734.9" y2="304.9" stroke="#0c1f33" stroke-width="0.7" opacity="0.35"/>
+  <polygon points="140,300 392,398 392,420 140,322" fill="#20344b"/>
+  <polygon points="392,398 820,322 820,344 392,420" fill="#16273b"/>
+  <polygon points="392,420 820,344 820,560 392,620" fill="url(#wallFace)"/>
+  <polygon points="140,322 392,420 392,620 140,620" fill="url(#wallShade)"/>
+  <!-- party walls: three narrow units -->
+  <g stroke="#0c1f33" stroke-width="4" opacity="0.18">
+    <line x1="534" y1="394" x2="534" y2="606"/><line x1="676" y1="369" x2="676" y2="586"/>
+  </g>
+  <g fill="#ffb703" opacity="0.85">
+    <polygon points="430,444 500,432 500,486 430,500"/>
+    <polygon points="562,420 632,408 632,462 562,476"/>
+  </g>
+  <polygon points="700,396 770,384 770,438 700,452" fill="#f4801f" opacity="0.8"/>
+  <polygon points="440,528 500,517 500,606 440,620" fill="#2c3f57"/>
+  <polygon points="580,504 640,493 640,582 580,596" fill="#2c3f57"/>
+  <!-- shaded quadrant marker: neighbouring tree casting shade on left roof half -->
+</g>
+<ellipse cx="470" cy="612" rx="330" ry="16" fill="#0c1f33" opacity="0.12"/>
+<path d="M96,470 Q86,403 96,348" stroke="#1f4a3c" stroke-width="7.9" fill="none" stroke-linecap="round" opacity="0.85"/>
+<path d="M96,348 Q66,322 37,322" stroke="#1f4a3c" stroke-width="6.5" fill="none" stroke-linecap="round" opacity="0.85"/>
+<path d="M96,348 Q82,314 67,301" stroke="#1f4a3c" stroke-width="6.5" fill="none" stroke-linecap="round" opacity="0.85"/>
+<path d="M96,348 Q110,314 125,301" stroke="#1f4a3c" stroke-width="6.5" fill="none" stroke-linecap="round" opacity="0.85"/>
+<path d="M96,348 Q126,322 155,322" stroke="#1f4a3c" stroke-width="6.5" fill="none" stroke-linecap="round" opacity="0.85"/>
+<path d="M96,348 Q130,329 164,340" stroke="#1f4a3c" stroke-width="6.5" fill="none" stroke-linecap="round" opacity="0.85"/>
+<path d="M96,348 Q62,329 28,340" stroke="#1f4a3c" stroke-width="6.5" fill="none" stroke-linecap="round" opacity="0.85"/>
+<path d="M846,556 Q836,491 846,437" stroke="#1f4a3c" stroke-width="7.7" fill="none" stroke-linecap="round" opacity="0.75"/>
+<path d="M846,437 Q817,412 788,412" stroke="#1f4a3c" stroke-width="6.3" fill="none" stroke-linecap="round" opacity="0.75"/>
+<path d="M846,437 Q832,405 818,392" stroke="#1f4a3c" stroke-width="6.3" fill="none" stroke-linecap="round" opacity="0.75"/>
+<path d="M846,437 Q860,405 874,392" stroke="#1f4a3c" stroke-width="6.3" fill="none" stroke-linecap="round" opacity="0.75"/>
+<path d="M846,437 Q875,412 904,412" stroke="#1f4a3c" stroke-width="6.3" fill="none" stroke-linecap="round" opacity="0.75"/>
+<path d="M846,437 Q879,419 912,430" stroke="#1f4a3c" stroke-width="6.3" fill="none" stroke-linecap="round" opacity="0.75"/>
+<path d="M846,437 Q813,419 780,430" stroke="#1f4a3c" stroke-width="6.3" fill="none" stroke-linecap="round" opacity="0.75"/>
+
+<rect width="900" height="620" filter="url(#grain)" opacity="0.05" style="mix-blend-mode:multiply"/>
+</svg>

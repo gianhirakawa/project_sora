@@ -28,9 +28,12 @@ const items = [
 export function TrustStrip() {
   return (
     <section aria-label="Why homeowners choose Sora" className="border-b border-line bg-white">
-      <Container className="grid gap-x-6 gap-y-4 py-6 sm:grid-cols-2 lg:grid-cols-4">
-        {items.map(({ icon: Icon, label }) => (
-          <div key={label} className="flex items-center gap-3">
+      <Container className="grid gap-x-6 gap-y-4 py-7 sm:grid-cols-2 lg:grid-cols-4">
+        {items.map(({ icon: Icon, label }, i) => (
+          <div
+            key={label}
+            className={`flex items-center gap-3 sr${i > 0 ? ` sr-d${i}` : ""}`}
+          >
             <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-sand text-ink">
               <Icon className="h-5 w-5" aria-hidden="true" />
             </span>

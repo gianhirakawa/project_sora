@@ -71,6 +71,32 @@ overhaul.)
 
 **Milestone 2.5 complete.**
 
+## Milestone 2.6 — Homepage v2 conversion redesign
+
+Port of the standalone v2 design (`docs/updated homepage/sora-solar-homepage-v2/`)
+into the existing component architecture, preserving all calculator/form/route
+behavior. 13 conversion-oriented changes.
+
+- [x] **Hero jumbotron with inline mini-calculator** — two-column hero (`hero.tsx` + client `hero-estimator.tsx`): bill input, quick-pick chips, instant indicative estimate (kWp/panels, savings range, payback) computed via the SAME `calculateSolarEstimate` domain pipeline as `/calculate` (national-average assumptions) so homepage numbers never contradict the full calculator; assumptions expandable inline; `id="quick-calc"` kept for sticky-CTA observation
+- [x] **Trust strip** — `sr` scroll-reveal stagger added
+- [x] **Calculator teaser** — two-column: numbered 3-step column + `calculator-device.svg` illustration column
+- [x] **Solution cards** — 3 `<article>` cards with `sys-*.svg` illustrations (640×260), honest backup badges (ember "no backup" / moss "with battery"), `sr` stagger, `group` hover lift (`-translate-y-1` + `shadow-float`), bullet lists, "Learn more" links to existing M2 routes, bottom upgrade-solar link
+- [x] **How it works** — dark section with connecting rail line (`lg` only), 4 numbered steps with stagger + hover, bottom CTA row (sun-pill `Link` + "Nothing is binding" note)
+- [x] **Packages** — `PackageCard` promoted treatment for the `highlight` option: sun border + ring, `shadow-float`, `lg:-mt-4` lift, "Most popular" badge, solid sun CTA vs outline for others; `items-start` grid; pricing disclaimer line
+- [x] **Projects carousel** — accessible scroll-snap `Carousel` (`carousel.tsx`): 3 project cards + CTA end-slide (loop never dead-ends), prev/next + dots + keyboard arrows, autoplay (6s projects / 7s reviews) that pauses on hover/focus, on user interaction (permanent), and out of view (IntersectionObserver); `prefers-reduced-motion` disables autoplay + smooth scroll
+- [x] **Why Sora + reviews** — left column: heading + `why-install-team.svg` + 4 reasons; right column: testimonial Carousel (stars, initials avatars, 7s autoplay) + "talk to a human" card linking `/contact`
+- [x] **FAQ** — sticky heading column on desktop (`lg:sticky lg:top-24`), accordion right, staggered reveals
+- [x] **Final CTA** — grain texture + centered `sr` reveal
+- [x] **Scroll progress bar** — `ScrollProgress` (thin sunline under sticky header, `scroll` listener, passive)
+- [x] **Sticky mobile CTA** — `StickyCta` (fixed bottom bar on mobile; observes `#quick-calc` leaving viewport via IntersectionObserver, 600px scroll fallback, hidden on `/calculate`-style full-app pages n/a on homepage; respects reduced motion, hidden until in view, `role`/aria correct)
+- [x] **Scroll-reveal system** — `ScrollReveal` (single IntersectionObserver over all `.sr` elements) + `.sr`/`.is-in`/`.sr-d1..d3` utilities in `globals.css` + `prefers-reduced-motion` override; applied with stagger across every homepage section
+- [x] **Layout/a11y** — Skip link (`#main`), `id="main"` landmark target, FAQ `FAQPage` JSON-LD (`page.tsx`)
+- [x] **Assets** — 8 SVGs copied to `public/images/`; plain `<img>` with explicit width/height + `loading="lazy"` (SVG optimization limited in Next 15)
+
+Verified: `scripts/verify.sh` — tsc + eslint (src) clean, 44/44 vitest, `next build` green, prod smoke 200s (`/`, `/calculate`, `/packages`, `/book-site-survey`).
+
+**Milestone 2.6 complete.**
+
 ## Milestone 3 — Solar calculator P0
 
 Itemized plan (see commit history; T1–T4 = domain core, T5–T6 = UI, T7–T9 = prefill/analytics/verification):
@@ -191,8 +217,8 @@ Working task list, tackled one by one. Each task is self-contained and checked o
 
 Set this section at the start of active development.
 
-- Current milestone: **Milestone 2.5 complete** (nav dropdowns restored; "Dawn Over the Roof" theme defined in `.pi/DESIGN_THEME.md` and applied site-wide). Next: **Milestone 4 — Lead capture + CRM** (persistence, anti-spam/rate limiting, consent, CRM adapter, n8n webhook, acknowledgement).
-- Last verified build (theme overhaul): tsc + eslint clean, 44/44 vitest, `next build` green (21 routes); prod smoke 200s: `/`, `/calculate`, `/get-solar/home-solar`, `/products`, `/packages`, `/about`, `/book-site-survey`; `bg-sunrise`/`tnum`/`reveal`/`grain`/`bg-dusk` confirmed in production CSS; contrast pairs verified (see M2.5 item).
+- Current milestone: **Milestone 2.6 complete** (homepage v2 conversion redesign ported — hero mini-calculator, carousels, scroll reveals, sticky CTA, scroll progress, FAQ JSON-LD; see M2.6 items above). Next: **Milestone 4 — Lead capture + CRM** (persistence, anti-spam/rate limiting, consent, CRM adapter, n8n webhook, acknowledgement).
+- Last verified build (M2.6, `scripts/verify.sh`): tsc + eslint (src) clean, 44/44 vitest, `next build` green; prod smoke 200s: `/`, `/calculate`, `/packages`, `/book-site-survey`.
 - Known blockers: None recorded
 - Note: intermittent `next start` 404s during smoke tests were traced to stale `next-server` processes holding ports from prior failed builds (not app code); always confirm no old server is listening before trusting a smoke result.
 

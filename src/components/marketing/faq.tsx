@@ -6,6 +6,8 @@ import { Accordion } from "../ui/accordion";
  * FAQ (M1). Questions map to the customer-question list in PROJECT.md.
  * Net-metering answers are intentionally general; the detailed guide
  * (Milestone 5) carries utility-specific, versioned details.
+ *
+ * v2 layout: sticky heading column on desktop, accordion on the right.
  */
 const items = [
   {
@@ -44,26 +46,30 @@ export function Faq() {
   return (
     <Section id="faq" labelledBy="faq-heading" tone="surface">
       <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">
-        <div>
-          <SectionHeading
-            id="faq-heading"
-            title="Questions, answered straight"
-            intro={
-              <>
-                Still unsure about something?{" "}
-              <a
-                href="/contact"
-                className="font-semibold text-ink underline underline-offset-4 hover:decoration-sun hover:decoration-2"
-              >
-                Ask us directly
-              </a>{" "}
-                — a real person replies.
-              </>
-            }
-          />
+        <div className="sr">
+          <div className="max-w-2xl lg:sticky lg:top-24">
+            <SectionHeading
+              id="faq-heading"
+              title="Questions, answered straight"
+              intro={
+                <>
+                  Still unsure about something?{" "}
+                  <a
+                    href="/contact"
+                    className="font-semibold text-ink underline underline-offset-4 hover:decoration-sun hover:decoration-2"
+                  >
+                    Ask us directly
+                  </a>{" "}
+                  — a real person replies.
+                </>
+              }
+            />
           </div>
+        </div>
+        <div className="sr sr-d1">
           <Accordion items={items} />
         </div>
+      </div>
     </Section>
   );
 }
