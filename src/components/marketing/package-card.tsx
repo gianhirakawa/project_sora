@@ -4,9 +4,10 @@ import type { PackageOption } from "./package-options";
 /**
  * Shared package card — used by the homepage section and /packages.
  *
- * The `highlight` option ("Most popular") gets the promoted treatment:
- * sun border + ring, floated shadow, lifted above its neighbours on
- * desktop, and a solid sun CTA instead of the outline one.
+ * All three cards are uniform in size, spacing, typography, and CTA. The
+ * `highlight` option ("Most popular") differs only by the badge inside the
+ * card (top-right) and a slightly deeper hover shadow/ring; the sun border
+ * appears only on hover, like the other cards.
  */
 export function PackageCard({
   option,
@@ -22,19 +23,19 @@ export function PackageCard({
       className={[
         "group relative flex flex-col gap-4 rounded-2xl border-2 bg-white p-6 transition-all duration-300 hover:-translate-y-1",
         emphasized
-          ? "border-sun shadow-float ring-4 ring-sun/15 lg:-mt-4 lg:pb-8"
+          ? "border-line shadow-float hover:border-sun hover:ring-4 hover:ring-sun/15" // deeper hover shadow, same box
           : "border-line shadow-lift hover:border-sun",
         className,
       ].join(" ")}
     >
-      {emphasized && (
-        <span className="absolute -top-3 left-6 inline-flex items-center rounded-full bg-sun px-3 py-1 font-display text-xs font-bold uppercase tracking-wide text-ink shadow-[0_2px_0_0_rgb(12_31_51)]">
-          Most popular
-        </span>
-      )}
-      <h3 className={`font-display text-xl font-bold ${emphasized ? "mt-1" : ""}`}>
-        {option.name}
-      </h3>
+      <div className="flex items-start justify-between gap-3">
+        <h3 className="font-display text-xl font-bold">{option.name}</h3>
+        {emphasized && (
+          <span className="inline-flex w-fit shrink-0 items-center rounded-full bg-sun px-3 py-1 font-display text-xs font-bold uppercase tracking-wide text-ink shadow-[0_2px_0_0_rgb(12_31_51)]">
+            Most popular
+          </span>
+        )}
+      </div>
       <p className="text-sm font-semibold text-ink-soft">{option.size}</p>
       <p className="font-display text-3xl font-extrabold tabular-nums">
         {option.price}
@@ -53,8 +54,8 @@ export function PackageCard({
       </ul>
       <Button
         href="/book-site-survey"
-        variant={emphasized ? "primary" : "sun"}
-        size={emphasized ? "lg" : "md"}
+        variant="sun"
+        size="md"
         className="w-full"
       >
         Get My Actual Quote

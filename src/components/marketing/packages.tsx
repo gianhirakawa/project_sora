@@ -30,7 +30,7 @@ export function Packages() {
         }
       />
 
-      <div className="mt-10 grid items-start gap-5 lg:grid-cols-3">
+      <div className="mt-10 grid gap-5 lg:grid-cols-3">
         {PACKAGE_OPTIONS.map((option, i) => (
           <PackageCard
             key={option.name}
