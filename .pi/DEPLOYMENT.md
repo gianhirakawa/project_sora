@@ -1,5 +1,22 @@
 # Deployment and Environments
 
+## Local verification (agent-safe build)
+
+Next.js dev and production builds share one output dir (`.next/`). A plain
+`next build` or `next start` in this repo clobbers a running `next dev`
+server's assets (HTML renders, CSS 404s until the dev server is restarted).
+
+To keep agent verification from ever breaking the user's live dev server:
+
+- `next.config.ts` reads `distDir` from `process.env.NEXT_DIST_DIR` (default `.next`).
+- **Agents must verify with `bash scripts/verify.sh`**, which builds and smoke-tests
+  with `NEXT_DIST_DIR=.next-verify` on port 3100. Plain `npx next build` /
+  `npx next start -p 3000` are banned while the user's dev server may be running.
+- `tsc`/`eslint`/`vitest` alone never touch `.next/` and are always safe.
+- The one-time breakage caused by pre-fix builds is resolved by a single dev
+  server restart; after that, no restarts should ever be needed.
+- `.next-verify/` is gitignored.
+
 ## Environments
 
 Use at least:
