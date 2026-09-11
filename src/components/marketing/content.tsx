@@ -22,8 +22,10 @@ export function PageHero({
   title: string;
   lead: string;
 }) {
+  // overflow-hidden on the header clips the decorative glow so it can never
+  // widen the document (previously leaked 80px of horizontal scroll).
   return (
-    <header className="relative border-b border-line bg-sand">
+    <header className="relative overflow-hidden border-b border-line bg-sand">
       <div
         aria-hidden="true"
         className="absolute inset-x-0 top-0 h-[3px] bg-sunrise"

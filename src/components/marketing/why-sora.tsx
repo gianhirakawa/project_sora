@@ -72,7 +72,10 @@ export function WhySora() {
   return (
     <Section labelledBy="why-heading" tone="tint">
       <div className="grid gap-10 lg:grid-cols-2">
-        <div className="sr">
+        {/* min-w-0 on both columns: grid items default to min-width:auto, which
+            lets the testimonial carousel's track content widen the implicit
+            auto track past the viewport on mobile (horizontal page scroll). */}
+        <div className="sr min-w-0">
           <SectionHeading id="why-heading" title="Why homeowners pick Sora" />
 
           <figure className="mt-7 overflow-hidden rounded-2xl border border-line shadow-lift">
@@ -100,7 +103,7 @@ export function WhySora() {
         </div>
 
         {/* Testimonial slider + "talk to a human" escape hatch. */}
-        <div id="reviews" className="sr sr-d2 scroll-mt-20">
+        <div id="reviews" className="sr sr-d2 min-w-0 scroll-mt-20">
           <Carousel
             label="Customer reviews"
             autoplayMs={7000}

@@ -108,9 +108,9 @@ Verified: `scripts/verify.sh` — tsc + eslint (src) clean, vitest green, `next 
 
 - [x] **`PackageCard` hover-only highlight, badge inside card, uniform cards** — the promoted `Sora Family` card's always-on sun border/ring replaced with hover-only `hover:border-sun hover:ring-4 hover:ring-sun/15` on a neutral `border-line` base; the `Most popular` badge moved from its absolute position straddling the top border into the card as a top-row flex (`title left / badge top-right`), titles uniformly top-left; all three CTAs now the `sun` variant (ink outline at rest, sun-yellow on hover) at the same `md` size; the `lg:-mt-4` upward lift removed and the homepage grid `items-start` dropped so all three cards stretch to equal height with aligned top/bottom edges (Sora Family's only remaining difference is a deeper hover shadow/ring)
 
-- [ ] **Mobile view fix — homepage package section** (user report: not mobile-ready). Audit the package cards + section at small viewports in the standalone mobile pass: card stacking/gap, `Most popular` badge vs long title wrap, price/typography scale, CTA tap targets, and the equal-height stretch behavior on 1-col layouts (shared `PackageCard` also affects `/packages`). Fix + verify at 320/375/768 before moving on
+- [x] **Mobile view fix — homepage package section** (user report: horizontal "scrollable whitespace" on the right). Root cause was **not** the package cards — DOM bisection at 320/375 traced it to the Why-Sora section: the reviews `Carousel` track's content min-content widened the implicit CSS-grid auto track to 564px because both `lg:grid-cols-2` columns were grid items at the default `min-width:auto`. Fix: `min-w-0` on both grid items + defensive `min-w-0` on the `Carousel` root. Audited all 17 routes at 320/375: a second leak found — `PageHero`'s decorative glow at `right-[-80px]` widened every subpage by 80px; fixed with `overflow-hidden` on the hero header. Package cards themselves verified fine on mobile (1-col stack, full-width cards, single-line badge, CTAs 44–52px). After both fixes: `documentElement.scrollWidth == innerWidth` on **all 17 routes at 320/375**, 0px overflow at 768/1440
 
-Verified: tsc + eslint clean, vitest 44/44, `next build` green, prod smoke 200s (`/`, `/packages`).
+Verified: tsc + eslint clean, `next build` green, headless-Chromium overflow audit across all 17 routes × 320/375 (0px), desktop 768/1440 (0px).
 
 ## Milestone 3 — Solar calculator P0
 
@@ -232,8 +232,8 @@ Working task list, tackled one by one. Each task is self-contained and checked o
 
 Set this section at the start of active development.
 
-- Current milestone: **Milestone 2.6 complete + follow-ups** (homepage v2 conversion redesign ported — hero mini-calculator, carousels, scroll reveals, sticky CTA, scroll progress, FAQ JSON-LD; hero estimator motion follow-up; package-card hover-highlight follow-up). Next: **M2.6 follow-up — homepage package section mobile view fix** (open item in M2.6 follow-ups above), then **Milestone 4 — Lead capture + CRM** (persistence, anti-spam/rate limiting, consent, CRM adapter, n8n webhook, acknowledgement).
-- Last verified build (M2.6, `scripts/verify.sh`): tsc + eslint (src) clean, 44/44 vitest, `next build` green; prod smoke 200s: `/`, `/calculate`, `/packages`, `/book-site-survey`.
+- Current milestone: **Milestones 1–3 complete, all M2.6 follow-ups closed** (homepage v2 conversion redesign; hero estimator motion; package-card hover highlight; **horizontal-overflow fixes** — Why-Sora grid `min-w-0` + `PageHero` glow clip; full-route mobile audit clean at 320/375). Next: **Milestone 4 — Lead capture + CRM** (persistence, anti-spam/rate limiting, consent, CRM adapter, n8n webhook, acknowledgement).
+- Last verified build (`scripts/verify.sh`-equivalent manual pass): tsc + eslint clean, `next build` green, Playwright overflow audit: all 17 routes 0px horizontal overflow at 320/375 (and 768/1440).
 - Known blockers: None recorded
 - Note: intermittent `next start` 404s during smoke tests were traced to stale `next-server` processes holding ports from prior failed builds (not app code); always confirm no old server is listening before trusting a smoke result.
 

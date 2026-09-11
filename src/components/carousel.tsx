@@ -184,6 +184,7 @@ export function Carousel({
   return (
     <div
       ref={rootRef}
+      className="min-w-0"
       onMouseEnter={() => stopAutoplay()}
       onMouseLeave={maybeStart}
       onFocusCapture={() => stopAutoplay()}
