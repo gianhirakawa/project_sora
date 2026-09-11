@@ -112,6 +112,10 @@ Verified: `scripts/verify.sh` — tsc + eslint (src) clean, vitest green, `next 
 
 Verified: tsc + eslint clean, `next build` green, headless-Chromium overflow audit across all 17 routes × 320/375 (0px), desktop 768/1440 (0px).
 
+### M2.6 follow-up — mobile menu tap-outside dismiss (user request)
+
+- [x] **Mobile menu closes on tap outside** — user report: with the burger menu open, tapping the logo/header or page body did nothing; had to hit the X. Fix in `header.tsx`: while the mobile panel is open, a document-level `pointerdown` listener closes it (and resets the open accordion section) unless the press lands inside the `#mobile-menu` panel; the `#mobile-menu-toggle` button is excluded so its own `onClick` toggle stays authoritative (avoids pointerdown-close → click-reopen); `Tab` with focus outside the panel dismisses likewise, mirroring the existing Escape behavior. Verified: tsc + eslint clean, no component test files for header exist (unit tests remain calculator-focused per TESTING.md)
+
 ## Milestone 3 — Solar calculator P0
 
 Itemized plan (see commit history; T1–T4 = domain core, T5–T6 = UI, T7–T9 = prefill/analytics/verification):

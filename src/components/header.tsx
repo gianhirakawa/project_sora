@@ -67,6 +67,35 @@ export function Header() {
     return () => window.removeEventListener("keydown", onKey);
   }, [openDropdown]);
 
+  // Clicking anywhere outside the open mobile menu (logo, header tabs, page
+  // body, the X toggle) dismisses it, like a standard dropdown.
+  useEffect(() => {
+    if (!open) return;
+    function onPointerDown(e: PointerEvent) {
+      const target = e.target as Node;
+      // The X toggle closes via its own onClick; letting pointerdown fire
+      // first would let that click handler immediately reopen the menu.
+      if (menuRef.current?.contains(target)) return;
+      if (document.getElementById("mobile-menu-toggle")?.contains(target))
+        return;
+      setOpen(false);
+      setOpenMobileSection(null);
+    }
+    function onKey(e: KeyboardEvent) {
+      // Same dismiss on programmatic/focus navigation outside the panel.
+      if (e.key === "Tab" && !menuRef.current?.contains(e.target as Node)) {
+        setOpen(false);
+        setOpenMobileSection(null);
+      }
+    }
+    document.addEventListener("pointerdown", onPointerDown);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
   // Mobile menu links: unified tap-target geometry (M2 theme revamp).
   const mobileLinkBase =
     "flex min-h-11 w-full items-center gap-2 rounded-xl px-3 py-2.5 text-ink hover:bg-sand focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-sun";
