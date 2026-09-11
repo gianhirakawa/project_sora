@@ -147,6 +147,10 @@ Original requirement checklist (kept for traceability):
 - [x] Add calculator analytics events (M3-T8)
 - [x] Add deterministic calculator tests
 
+### M3 follow-up — calculator validation UX on mobile (user QA report)
+
+- [x] **Scroll-to-first-invalid-field on failed submit** (mobile QA: tested the solar savings calculator on mobile, tapped *Calculate My Savings* with a field missing — errors rendered but the view stayed at the button and the missing field was off-screen). Fix in `calculator-widget.tsx`: on Zod failure, `focusFirstInvalidField()` walks `FIELD_ORDER` (all 8 validatable fields in DOM order: bill → city → property role → roof type → goal → daytime usage → kWh → AC units), `scrollIntoView({ behavior: "smooth", block: "center" })` the first errored control, and focuses it (`preventScroll` in a `requestAnimationFrame` so it doesn't fight the smooth scroll). Radio groups got stable ids (`#calculator-roof`, `#calculator-goal`, `#calculator-daytime`) so a failed radio group lands on and focuses its first option — visible focus ring + announced by assistive tech. Verified: `tsc --noEmit` + eslint clean (run cross-platform against the owner's live `node_modules` — no reinstall, server untouched); live phone re-check by owner
+
 ## Milestone 4 — Lead capture + CRM
 
 - [ ] Quote/site-survey form

@@ -92,7 +92,40 @@ const radioLabelClass =
   "flex min-h-11 cursor-pointer items-center gap-2 rounded-xl px-1";
 const radioInputClass = "size-4 accent-ink";
 
+/** Validatable fields in DOM order — used to land on the first invalid one. */
+const FIELD_ORDER: ReadonlyArray<readonly [keyof FieldErrors, string]> = [
+  ["monthlyBillPhp", "#calculator-bill"],
+  ["city", "#calculator-city"],
+  ["propertyRole", "#calculator-role"],
+  ["roofType", "#calculator-roof"],
+  ["goal", "#calculator-goal"],
+  ["daytimeUsage", "#calculator-daytime"],
+  ["monthlyKwh", "#calculator-kwh"],
+  ["acUnits", "#calculator-ac"],
+];
+
+/**
+ * After a failed submit, move the viewport to the first invalid field (DOM
+ * order) and focus it, so mobile users are never left staring at the submit
+ * button while the error sits off-screen. Radio groups land on their first
+ * option so focus is visible and announced by assistive tech.
+ */
+function focusFirstInvalidField(errors: FieldErrors) {
+  const entry = FIELD_ORDER.find(([key]) => errors[key]);
+  if (!entry) return;
+  const [, selector] = entry;
+  const el = document.querySelector(selector);
+  if (!el) return;
+  el.scrollIntoView({ behavior: "smooth", block: "center" });
+  const target =
+    el instanceof HTMLInputElement || el instanceof HTMLSelectElement
+      ? el
+      : el.querySelector<HTMLInputElement>("input");
+  requestAnimationFrame(() => target?.focus({ preventScroll: true }));
+}
+
 function RadioGroup({
+  id,
   legend,
   error,
   name,
@@ -100,6 +133,7 @@ function RadioGroup({
   value,
   onChange,
 }: {
+  id?: string;
   legend: string;
   error?: string;
   name: string;
@@ -109,7 +143,7 @@ function RadioGroup({
 }) {
   const errorId = `${name}-error`;
   return (
-    <fieldset aria-describedby={error ? errorId : undefined} className="space-y-2">
+    <fieldset id={id} aria-describedby={error ? errorId : undefined} className="space-y-2">
       <legend className="font-display text-sm font-semibold">{legend}</legend>
       <div className={radioGroupClass}>
         {options.map((opt) => (
@@ -178,6 +212,7 @@ export function CalculatorWidget() {
       }
       setResult(null);
       setErrors(fieldErrors);
+      focusFirstInvalidField(fieldErrors);
       return;
     }
 
@@ -332,6 +367,7 @@ export function CalculatorWidget() {
           </Field>
 
           <RadioGroup
+            id="calculator-roof"
             legend="Roof type"
             name="roofType"
             error={errors.roofType}
@@ -341,6 +377,7 @@ export function CalculatorWidget() {
           />
 
           <RadioGroup
+            id="calculator-goal"
             legend="Your main goal with solar"
             name="goal"
             error={errors.goal}
@@ -350,6 +387,7 @@ export function CalculatorWidget() {
           />
 
           <RadioGroup
+            id="calculator-daytime"
             legend="Home occupancy during the day"
             name="daytimeUsage"
             error={errors.daytimeUsage}
