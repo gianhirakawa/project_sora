@@ -11,6 +11,9 @@ const nextConfig: NextConfig = {
   // The site is fully static (no server actions/API routes yet), so it exports
   // to `out/` and is deployed via GitHub Actions (see .github/workflows/nextjs.yml).
   output: "export",
+  // Required for GitHub Pages: export must produce `route/index.html` dirs.
+  // Next 15.5 defaults to flat `route.html` files, which 404 on Pages.
+  trailingSlash: true,
 
   // GitHub Pages serves this repo at https://<user>.github.io/project_sora/,
   // so the CI build sets NEXT_PUBLIC_BASE_PATH=/project_sora. Local dev stays

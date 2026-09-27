@@ -51,13 +51,15 @@ http
         res.end("forbidden");
         return;
       }
+      // Deliberately NO `.html` fallback: GitHub Pages (nginx) does not do
+      // `foo` -> `foo.html`, and we want regressions in the export layout to
+      // surface here exactly as they would on Pages.
       let file = null;
       try {
         const st = await stat(target);
         file = st.isDirectory() ? path.join(target, "index.html") : target;
       } catch {
-        const candidates = target.endsWith(".html") ? [target] : [`${target}.html`];
-        file = (await Promise.all(candidates.map((c) => stat(c).then(() => c).catch(() => null)))).find(Boolean) ?? null;
+        file = null;
       }
       if (!file || !(await stat(file).catch(() => null))) {
         res.writeHead(404);

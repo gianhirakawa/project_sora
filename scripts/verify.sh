@@ -36,8 +36,9 @@ for _ in $(seq 1 30); do
 done
 [ "$ok" = "1" ] || { echo "smoke test failed (last code: $code)"; tail -20 /tmp/sora-verify-start.log; exit 1; }
 
-# No-slash URLs (deep links) must resolve like they do on GitHub Pages.
-for path in /project_sora/ /project_sora/calculate /project_sora/packages /project_sora/book-site-survey; do
+# No-slash URLs (deep links) must resolve like they do on GitHub Pages,
+# including nested routes (flat `route.html` exports 404 on Pages).
+for path in /project_sora/ /project_sora/calculate /project_sora/packages /project_sora/book-site-survey /project_sora/get-solar/home-solar /project_sora/products/panels /project_sora/about; do
   printf '  %-30s %s\n' "$path" "$(curl -s -o /dev/null -w '%{http_code}' "http://localhost:$PORT$path")"
 done
 

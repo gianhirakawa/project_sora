@@ -61,6 +61,11 @@ site is fully static. This is a hard constraint on features:
 - The app builds with `output: "export"` (`next.config.ts`). The export HTML
   lands in `distDir` (Next 15 behavior), so CI builds with
   `NEXT_DIST_DIR=out` and uploads `./out`.
+- `trailingSlash: true` is required in `next.config.ts`: Next 15.5 export
+  otherwise emits flat `route.html` files, and GitHub Pages (nginx) serves no
+  `.html` fallback — every subpage 404s (only the homepage survived). The
+  export must be `route/index.html` directories. `scripts/serve-out.mjs`
+  deliberately omits a `.html` fallback to catch regressions locally.
 - Base path: the repo is served at `https://<user>.github.io/project_sora/`,
   so CI sets `NEXT_PUBLIC_BASE_PATH=/project_sora` (site deploys and PR
   preview deploys both live under the repo subpath). Local dev stays at root.
