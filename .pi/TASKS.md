@@ -20,7 +20,7 @@ Status markers:
 - [x] Establish route structure from sitemap (M1 routes done; remaining routes land with their milestones)
 - [x] Add environment-variable schema
 - [x] Add CI commands for lint, typecheck, test, build (+ GitHub Actions workflow)
-- [ ] Add error handling / logging conventions (conventions in use: typed action results + redacted `console.info` in `src/server`; formalize once M4 adds persistence)
+- [ ] Add error handling / logging conventions (conventions in use: typed action results + redacted `console.info` in `src/features/leads/actions`; formalize once M4 adds persistence)
 
 ## Milestone 1 — Public acquisition site
 
@@ -33,7 +33,8 @@ Status markers:
 - [x] Reviews/testimonials block (draft content — replace with real quotes)
 - [x] FAQ
 - [x] Final CTA
-- [x] Contact / site-survey page (form UI + Zod server actions; persistence lands in M4)
+- [x] Contact / site-survey page (form UI + Zod validation in `src/features/leads/actions`; persistence lands in M4)
+- [x] GitHub Pages deployment (static export + `.github/workflows/nextjs.yml`; live URL set once owner enables Pages + pushes)
 - [x] Privacy / terms / data privacy pages
 
 ## Milestone 2 — System and trust content
@@ -241,9 +242,11 @@ Working task list, tackled one by one. Each task is self-contained and checked o
 Set this section at the start of active development.
 
 - Current milestone: **Milestones 1–3 complete, all M2.6 follow-ups closed** (homepage v2 conversion redesign; hero estimator motion; package-card hover highlight; **horizontal-overflow fixes** — Why-Sora grid `min-w-0` + `PageHero` glow clip; full-route mobile audit clean at 320/375). Next: **Milestone 4 — Lead capture + CRM** (persistence, anti-spam/rate limiting, consent, CRM adapter, n8n webhook, acknowledgement).
-- Last verified build (`scripts/verify.sh`-equivalent manual pass): tsc + eslint clean, `next build` green, Playwright overflow audit: all 17 routes 0px horizontal overflow at 320/375 (and 768/1440).
+- Last verified build (`bash scripts/verify.sh`): tsc + eslint + 44 unit tests clean; static export build green (21 pages) with `NEXT_PUBLIC_BASE_PATH=/project_sora`; static smoke test 200s on `/project_sora/`, `/calculate`, `/packages`, `/book-site-survey` (no-slash deep links resolve like on Pages). Earlier: Playwright overflow audit: all 17 routes 0px horizontal overflow at 320/375 (and 768/1440).
+- **Deployment note (GitHub Pages):** lead forms now live in client-side `src/features/leads/actions.ts` (behavior-identical M1 validation + acknowledgement; Pages cannot run server actions). M4 must route submissions through an external server-side boundary (n8n webhook) — see `.pi/DEPLOYMENT.md`.
 - Known blockers: None recorded
-- Note: intermittent `next start` 404s during smoke tests were traced to stale `next-server` processes holding ports from prior failed builds (not app code); always confirm no old server is listening before trusting a smoke result.
+- Pending on repo owner: make `project_sora` public → repo `Settings → Pages → Source = GitHub Actions` → `git push origin main`. Site then builds/deploys to `https://gianhirakawa.github.io/project_sora/` via the Actions workflow.
+- Note: `next start` no longer applies (static export). Smoke tests serve the export with `scripts/serve-out.mjs` (Apache-like: dir index, no-slash → index.html, `.html` fallback), stripping the CI base path. Earlier note: stale `next-server` processes on 3100 caused bogus 404s; kill any leftover before trusting smoke results.
 
 ### Content sign-off needed (does not block build)
 

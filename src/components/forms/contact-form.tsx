@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { submitContact, type ActionResult } from "@/server/actions/leads";
+import { submitContact, type ActionResult } from "@/features/leads/actions";
 import { Button } from "../ui/button";
 import {
   Field,

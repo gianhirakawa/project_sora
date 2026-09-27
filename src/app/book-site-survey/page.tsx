@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { ClipboardCheck, MapPin, Timer, ShieldCheck } from "lucide-react";
 import { Container } from "@/components/ui/container";
-import { BookSiteSurveyForm } from "@/components/forms/book-site-survey-form";
-import { surveyPrefillSchema, toFormPrefill } from "@/features/calculator/prefill";
+import { BookSiteSurveyWithPrefill } from "@/components/forms/book-site-survey-prefill";
 
 export const metadata: Metadata = {
   title: "Book a Free Site Survey",
@@ -33,28 +33,7 @@ const benefits = [
   },
 ];
 
-function coerceParams(
-  raw: Record<string, string | string[] | undefined>,
-): Record<string, string> {
-  const out: Record<string, string> = {};
-  for (const [k, v] of Object.entries(raw)) {
-    if (typeof v === "string") out[k] = v;
-  }
-  return out;
-}
-
-export default async function BookSiteSurveyPage({
-  searchParams,
-}: {
-  searchParams: Promise<Record<string, string | string[] | undefined>>;
-}) {
-  const params = await searchParams;
-  const parsed = surveyPrefillSchema.safeParse(coerceParams(params));
-  const prefill =
-    parsed.success && parsed.data.estimate === "1"
-      ? toFormPrefill(parsed.data)
-      : undefined;
-
+export default function BookSiteSurveyPage() {
   return (
     <Container className="py-14 sm:py-20">
       <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
@@ -84,7 +63,10 @@ export default async function BookSiteSurveyPage({
 
         <div>
           <h2 className="sr-only">Site survey request form</h2>
-          <BookSiteSurveyForm prefill={prefill} />
+          {/* Suspense is required for static export of useSearchParams. */}
+          <Suspense fallback={undefined}>
+            <BookSiteSurveyWithPrefill />
+          </Suspense>
         </div>
       </div>
     </Container>

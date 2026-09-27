@@ -1,0 +1,51 @@
+# Deploys the static export (out/) to GitHub Pages.
+# - main push  -> production site: https://gianhirakawa.github.io/project_sora/
+# - PRs        -> preview deploys
+#
+# Requires: Settings -> Pages -> Build and deployment -> Source = "GitHub Actions"
+name: GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      # Pages serves the repo under the /project_sora path (site & PR deploys).
+      # NEXT_DIST_DIR=out keeps the export in a clean folder to upload.
+      - env:
+          NEXT_DIST_DIR: out
+          NEXT_PUBLIC_BASE_PATH: /project_sora
+        run: npm run build
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./out
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

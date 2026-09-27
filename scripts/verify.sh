@@ -16,24 +16,29 @@ echo "==> lint"
 npx eslint src
 echo "==> unit tests"
 npx vitest run
-echo "==> production build -> $DIST"
-NEXT_DIST_DIR="$DIST" npx next build
+# Build the static export exactly like CI does (GitHub Pages base path), so
+# the smoke test exercises the same asset/link paths that Pages will serve.
+# Note: `next start` cannot be used with `output: "export"` — the export is
+# served statically instead (GH Pages behaves like a static file server).
+echo "==> production build (export) -> $DIST"
+NEXT_DIST_DIR="$DIST" NEXT_PUBLIC_BASE_PATH=/project_sora npx next build
 
 echo "==> smoke test on :$PORT"
-NEXT_DIST_DIR="$DIST" npx next start -p "$PORT" >/tmp/sora-verify-start.log 2>&1 &
+node scripts/serve-out.mjs "$PORT" "$DIST" /project_sora >/tmp/sora-verify-start.log 2>&1 &
 START_PID=$!
-trap 'kill "$START_PID" 2>/dev/null; pkill -f "next-server" 2>/dev/null || true' EXIT
+trap 'kill "$START_PID" 2>/dev/null' EXIT
 
 ok=0
 for _ in $(seq 1 30); do
-  code=$(curl -s -o /dev/null -w '%{http_code}' "http://localhost:$PORT/" || true)
+  code=$(curl -s -o /dev/null -w '%{http_code}' "http://localhost:$PORT/project_sora/" || true)
   [ "$code" = "200" ] && ok=1 && break
   sleep 1
 done
 [ "$ok" = "1" ] || { echo "smoke test failed (last code: $code)"; tail -20 /tmp/sora-verify-start.log; exit 1; }
 
-for path in / /calculate /packages /book-site-survey; do
-  printf '  %-20s %s\n' "$path" "$(curl -s -o /dev/null -w '%{http_code}' "http://localhost:$PORT$path")"
+# No-slash URLs (deep links) must resolve like they do on GitHub Pages.
+for path in /project_sora/ /project_sora/calculate /project_sora/packages /project_sora/book-site-survey; do
+  printf '  %-30s %s\n' "$path" "$(curl -s -o /dev/null -w '%{http_code}' "http://localhost:$PORT$path")"
 done
 
 echo "==> verification complete (user's next dev on .next/ untouched)"

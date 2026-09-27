@@ -4,7 +4,7 @@ import { useState } from "react";
 import {
   submitSiteSurvey,
   type ActionResult,
-} from "@/server/actions/leads";
+} from "@/features/leads/actions";
 import type { SurveyFormPrefill } from "@/features/calculator/prefill";
 import { Button } from "../ui/button";
 import {

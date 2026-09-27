@@ -1,4 +1,4 @@
-"use server";
+"use client";
 
 import { bookSiteSurveySchema, contactSchema } from "@/features/leads/schemas";
 
@@ -16,11 +16,17 @@ function toFieldErrors(error: { issues: { path: PropertyKey[]; message: string }
 }
 
 /**
- * Lead actions (M1).
+ * Lead submission actions (M1) — client-side.
  *
- * NOTE: validation + acknowledgement only. Persisting leads, consent
- * timestamps, rate limiting, and CRM/n8n handoff land in Milestone 4.
- * Logs are redacted by design (no full names/addresses on the console).
+ * DEPLOYMENT CONSTRAINT: the site is deployed to GitHub Pages, which serves
+ * static files only, so Next.js server actions cannot run there. For M1 the
+ * actions are intentionally behavior-identical to the previous server actions:
+ * zod validation + acknowledgement only. No lead data is persisted anywhere.
+ *
+ * MILESTONE 4: replace the bodies below with a POST to the server-side
+ * boundary (n8n webhook / lead endpoint) and move all validation there.
+ * Until then, treat these messages as acknowledgement-only — do not copy the
+ * "received" wording into customer-facing guarantees of storage.
  */
 export async function submitSiteSurvey(input: unknown): Promise<ActionResult> {
   const parsed = bookSiteSurveySchema.safeParse(input);
@@ -56,7 +62,6 @@ export async function submitContact(input: unknown): Promise<ActionResult> {
   });
   return {
     ok: true,
-    message:
-      "Message received. We reply to every message — usually within one business day.",
+    message: "Message received. We reply to every message — usually within one business day.",
   };
 }
