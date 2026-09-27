@@ -101,13 +101,13 @@ export function Header() {
     "flex min-h-11 w-full items-center gap-2 rounded-xl px-3 py-2.5 text-ink hover:bg-sand focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-sun";
 
   const sectionLink = (label: string, href: string) => (
-    <a
+    <Link
       href={href}
       onClick={() => setOpen(false)}
       className={`${mobileLinkBase} font-display text-base font-semibold`}
     >
       {label}
-    </a>
+    </Link>
   );
 
   return (
@@ -183,12 +183,12 @@ export function Header() {
                       <ul className="w-64 rounded-xl border border-line bg-white p-2 shadow-lg">
                         {entry.items.map((item) => (
                           <li key={item.href}>
-                            <a
+                            <Link
                               href={item.href}
                               className="block rounded-lg px-3 py-2 text-sm font-medium text-ink-soft hover:bg-sand hover:text-ink focus-visible:outline-2 focus-visible:outline-sun"
                             >
                               {item.label}
-                            </a>
+                            </Link>
                           </li>
                         ))}
                       </ul>
@@ -197,12 +197,12 @@ export function Header() {
                 </li>
               ) : (
                 <li key={entry.label}>
-                  <a
+                  <Link
                     href={entry.href}
                     className="inline-flex items-center gap-1 rounded px-2 py-1 text-sm font-semibold text-ink-soft hover:text-ink focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-sun"
                   >
                     {entry.label}
-                  </a>
+                  </Link>
                 </li>
               ),
             )}
@@ -263,13 +263,13 @@ export function Header() {
                     >
                       {entry.items.map((item) => (
                         <li key={item.href}>
-                          <a
+                          <Link
                             href={item.href}
                             onClick={() => setOpen(false)}
                             className={`${mobileLinkBase} text-sm font-medium`}
                           >
                             {item.label}
-                          </a>
+                          </Link>
                         </li>
                       ))}
                     </ul>
