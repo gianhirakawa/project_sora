@@ -27,9 +27,13 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
       - run: npm ci
+      # Quality gate: deploy only when checks pass (merged from the old ci.yml).
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm run test
       # Pages serves the repo under the /project_sora path (site & PR deploys).
       # NEXT_DIST_DIR=out keeps the export in a clean folder to upload.
       - env:

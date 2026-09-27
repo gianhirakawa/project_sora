@@ -71,8 +71,10 @@ site is fully static. This is a hard constraint on features:
   preview deploys both live under the repo subpath). Local dev stays at root.
   If a custom domain is configured for Pages, leave the base path unset in CI
   and re-run the workflow.
-- Workflow: `.github/workflows/nextjs.yml` (build → `actions/upload-pages-artifact`
-  → `actions/deploy-pages`). `main` pushes deploy to production; PRs get
+- Workflow: `.github/workflows/nextjs.yml` (lint/typecheck/test → build →
+  `actions/upload-pages-artifact` → `actions/deploy-pages`). Single workflow:
+  the old `ci.yml` was folded into it so a push produces one run and deploys
+  are gated on checks passing. `main` pushes deploy to production; PRs get
   preview deploys. Requires `Settings → Pages → Build and deployment → Source
   = GitHub Actions` on the repo.
 - **Server actions are impossible on Pages.** M1 lead submissions therefore
